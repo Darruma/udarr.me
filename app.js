@@ -18,7 +18,7 @@ app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'yeet', resave: false, saveUninitialized: true }));
-app.use('/', express.static(path.join(__dirname,'build')));
+app.use('/', express.static(path.join(__dirname,'frontend','build')));
 app.use('/images', express.static(path.join(__dirname, '/uploads')));
 app.use(
 	'/demo',
