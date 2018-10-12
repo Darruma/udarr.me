@@ -1,0 +1,7 @@
+/node_modules
+/uploads
+cert.pem
+chain.pem
+fullchain.pem
+privkey.pem
+/frontend/node_modules

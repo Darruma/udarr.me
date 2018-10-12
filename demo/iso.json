@@ -1,0 +1,13 @@
+{
+"companyName": "DarrumaCorp",
+"productName": "ChemistryAndComputing",
+"dataUrl": "iso.data.unityweb",
+"asmCodeUrl": "iso.asm.code.unityweb",
+"asmMemoryUrl": "iso.asm.memory.unityweb",
+"asmFrameworkUrl": "iso.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Light",
+"backgroundColor": "#E6B780"
+}

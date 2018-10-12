@@ -1,0 +1,79 @@
+{
+  "projects":[
+    {
+      "title":"A level Computer Science",
+      "link":"https://github.com/Darruma/alevelcomputerscience",
+      "image":"/images/alevelcomputerscience.jpg",
+      "content":"Interactive resources for learning A Level Computer Science",
+      "technologies":["HTML","CSS","Javascript","Node","Express","MongoDB","Bootstrap"],
+      "id":1
+    },
+    {
+      "title":"Udarr.me",
+      "link":"https://github.com/Darruma/udarr.me",
+      "image":"/images/udarr.me.jpg",
+      "content":"Check out the code used to create this website! ",
+      "technologies":["HTML","CSS","Javascript","Node","Express","React"],
+      "id":2
+    },
+    {
+      "title":"Ricochet",
+      "link":"https://github.com/Darruma/Ricochet",
+      "image":"/images/ricochet.jpg",
+      "content":"A simple android shooting game made in the unity engine",
+      "technologies":["C#","Unity"],
+      "id":3,
+      "webpage":"https://play.google.com/store/apps/details?id=com.Darruma.Ricochet2"
+     
+    },
+    {
+      "title":"Isomorph",
+      "link":"https://github.com/Darruma/Isomorph/",
+      "image":"/images/isomorph.jpg",
+      "content":"A tool for creating skeletal formulae made in Unity",
+      "technologies":["C#","Unity"],
+      "id":4,
+      "webpage":"/demo/iso"
+    },
+    {
+      "title":"Sentiment analysis with twitter",
+      "link":"https://github.com/Darruma/twitter-sentiment-analysis",
+      "image":"/images/twitter-sentiment-analysis.jpg",
+      "content":"Analyse a users sentiment using the twitter API",
+       "technologies":["Node"],
+      "id":5
+    },
+    {
+      "title":"Comments.js",
+      "link":"https://github.com/Darruma/comments.js",
+      "image":"/images/comments.js.jpg",
+      "content":"A simple comment system made using the MERN stack",
+      "technologies":["HTML","CSS","Javascript","Node","MongoDB","Express" ,"React"],
+      "id":6
+    },
+    {
+      "title":"Weather App",
+      "link":"https://github.com/Darruma/weather-app",
+      "image":"/images/weatherapp.jpg",
+      "content":"A 5 day forecast of the weather using the OpenWeatherMap API",
+      "technologies":["HTML","CSS","Javascript","Node","Express","React"],
+      "id":7
+    },
+    {
+      "title":"String Matching",
+      "link":"https://github.com/Darruma/stringmatching",
+      "image":"/images/stringmatching.jpg",
+      "content":"String matching algorithms implemented in python ",
+      "technologies":["C","Python"],
+      "id":8
+    },
+    {
+      "title":"Project Euler",
+      "link":"https://github.com/Darruma/project-euler",
+      "image":"/images/project-euler.jpg",
+      "content":"Solutions to the project euler questions in python",
+      "technologies":["Python"],
+      "id":9
+    }
+  ]
+}
