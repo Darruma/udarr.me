@@ -16,7 +16,7 @@ class Projects extends Component
 	render()
 	{
 		return(
-			<div>
+			<div class="pad-100">
 			<Filters filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} />
 
 				<div className="projects" component='div'>

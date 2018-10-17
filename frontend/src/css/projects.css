@@ -4,7 +4,7 @@
   align-content: center;
   grid-template-columns: repeat(3, 500px);
   grid-auto-rows: min-content;
-  margin-bottom: 20px;
+  margin-top:20px;
 }
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -14,4 +14,8 @@
      flex-wrap: wrap;
 
    }
+}
+.pad-100
+{
+  padding-top:100px;
 }
