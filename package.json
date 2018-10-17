@@ -7,7 +7,7 @@
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "express": "^4.16.3",
-    "expres-session": "^1.15.6"
+    "express-session": "^1.15.6"
   },
   "devDependencies": {},
   "scripts": {
