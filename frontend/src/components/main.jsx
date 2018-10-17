@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route,Link,Switch} from "react-router-dom";
+import { StaticRouter as Router, Route,Link,Switch} from "react-router-dom";
 import '../App.css';
 
 class Main extends Component
