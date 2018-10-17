@@ -37,10 +37,10 @@
 
 .links
 {
+  display: inline-block;
   text-decoration: none;
-  color: silver;
+  color: rgb(75, 77, 79);
   font-family: 'Nunito', sans-serif;
   font-size: 25px;
   padding: 10px;
-  display: inline-block;
 }
