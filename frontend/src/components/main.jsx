@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route,Link,Switch} from "react-router-dom";
 import '../App.css';
 
 class Main extends Component
 {
     render()
     {
-        <div className="App">
+        return(<div className="App">
             <div className="container-center">
                 <div className="title">
                      Umair Darr
@@ -15,7 +16,7 @@ class Main extends Component
                 <Link to="/blog">Blog</Link>
                 <a href="https://github.com/Darruma"/>
             </div>
-        </div>
+        </div>)
     }
 }
 export default Main;
