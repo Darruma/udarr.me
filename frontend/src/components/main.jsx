@@ -11,9 +11,9 @@ class Main extends Component
                 <div className="title">
                      Umair Darr
                 </div>
-                <Link to="/projects">Projects</Link>
-                <Link to="/photography">Photography</Link>
-                <Link to="/blog">Blog</Link>
+                <Link to="/projects" className='links'>Projects</Link>
+                <Link to="/photography" className='links'>Photography</Link>
+                <Link to="/blog" className='links'>Blog</Link>
                 <a href="https://github.com/Darruma"/>
             </div>
         </div>)
