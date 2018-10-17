@@ -18,7 +18,7 @@ app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'yeet', resave: false, saveUninitialized: true }));
-app.use('/', express.static(path.join(__dirname,'frontend','build')));
+app.use(express.static(path.join(__dirname,'frontend','build')));
 app.use('/images', express.static(path.join(__dirname, '/uploads')));
 app.use(
 	'/demo',
@@ -28,8 +28,7 @@ app.use(
 );
 app.use('/', dashboard);
 app.use('*', (req, res) => {
-	res.status(404);
-	res.sendFile(path.join(__dirname, '/404.html'));
+	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
 
 module.exports = app;
