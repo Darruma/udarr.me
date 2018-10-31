@@ -23,19 +23,15 @@ p
 	}
 }
 .project {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
 		display: flex;
-		-moz-align-items: center;
-		-webkit-align-items: center;
-		-ms-align-items: center;
+		justify-content: center;
 		align-items: center;
 		border-bottom: solid 2px;
 		margin-bottom: 3em;
 		min-width: 500px;
 		max-width: 500px;
-		flex: 1 0 auto;
+		flex:1 1 auto;
+		
 	}
 
 		.project .image {
