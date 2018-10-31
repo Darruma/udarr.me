@@ -18,6 +18,11 @@ app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'yeet', resave: false, saveUninitialized: true }));
+
+app.get('/.well-known/acme-challenge/h5QbsV45_uStRE3bnknBqonBSetlIbjXGY2IoA1anJ4',(req,res) =>
+{
+	res.send(h5QbsV45_uStRE3bnknBqonBSetlIbjXGY2IoA1anJ4.fCnANhc3gdW_Kz6FppVJL4_fhVuqT9VsbkBwCpPttpk);
+})
 app.use(express.static(path.join(__dirname,'frontend','build')));
 app.use('/images', express.static(path.join(__dirname, '/uploads')));
 app.use(
