@@ -19,12 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'yeet', resave: false, saveUninitialized: true }));
 
-app.get('well-known/acme-challenge/:content',(req,res) =>
-{
-	res.send('DSOORnfKe8RWJaQ0Czoejn9Ejeto8XCLcR_Ijh54GwM.fCnANhc3gdW_Kz6FppVJL4_fhVuqT9VsbkBwCpPttpk');
 
-})
-app.use(express.static(path.join(__dirname,'frontend','build')));
+app.use(express.static(path.join(__dirname,'client','build')));
 app.use('/images', express.static(path.join(__dirname, '/uploads')));
 app.use(
 	'/demo',
