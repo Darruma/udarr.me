@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './components/login';
 import Projects from './components/projects';
+import Blog from './components/blog'
 import Main from './components/main'
 import { HashRouter as Router, Route,Switch} from "react-router-dom";
 class App extends Component {
