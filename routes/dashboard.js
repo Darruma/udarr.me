@@ -18,8 +18,6 @@ router.post('/authenticate', (req, res) => {
 	return res.json({ success: false });
 });
 
-
-
 router.post('/addproject', (req, res) => {
 	const { title, link,image,content } = req.body;
 	if (req.session.authenticated) {
@@ -61,4 +59,13 @@ router.post('/editproject', (req, res) => {
 	}
 	return res.json({ success: false });
 });
+
+
+router.get('/blog',(req,res)=>{
+
+	return res.json(
+	{
+		message:'kek'
+	})
+})
 module.exports = router;

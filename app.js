@@ -28,7 +28,7 @@ app.use(
 		extensions: [ 'html', 'htm' ]
 	})
 );
-app.use('/', dashboard);
+app.use('/api', dashboard);
 app.use('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 });
