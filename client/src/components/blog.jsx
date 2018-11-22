@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
-
 class Blog extends Component {
-    render()
+    state = {
+        blogData:[
+            {
+                title:'test',
+                id:'test'
+            }
+        ]
+    }
+    render() {
+        return (<div>
+        </div>)
+    }
+
+    componentWillMount = () => 
     {
-        return(<div>Blog</div>)
     }
 }
 
