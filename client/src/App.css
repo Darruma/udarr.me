@@ -1,5 +1,4 @@
 .App {
-  min-height: 100%;
   height: 100%;
 }
 
@@ -15,7 +14,18 @@
   position:relative;
   margin-bottom: 100px;
 }
+.title
+{
+  margin-top: 60px;
+  font-size: 30px;
+}
 
+.centered-container{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .title {
   font-family: 'Nunito', sans-serif;
   font-size: 40px;
