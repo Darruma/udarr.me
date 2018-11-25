@@ -5,14 +5,14 @@ class Blog extends Component {
     state = {
         blogData: [
             {
-                title: 'tests',
+                title: 'African chocolate with eggs is nice',
                 id: 'test'
             }
         ]
     }
     render() {
         return (<div className='App'>
-        <div className='title'>Blog</div>
+        <div className='btitle'>Blog</div>
             <div className='centered-container'>
             {this.state.blogData.map(e =>
                 {

@@ -70,7 +70,7 @@ class Projects extends Component
 	};
 
 	componentWillMount() {
-		fetch('/projects')
+		fetch('/api/projects')
 			.then((res) => res.json())
 			.then((res) => this.setState({ projects: res, renderedProjects: res }));
 	}

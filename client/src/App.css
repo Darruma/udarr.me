@@ -14,14 +14,20 @@
   position:relative;
   margin-bottom: 100px;
 }
-.title
+.btitle
 {
   margin-top: 60px;
+  margin-bottom: 40px;
   font-size: 30px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
 }
-
+.blog-title
+{
+  text-decoration: underline;
+  font-size: 20px;
+}
 .centered-container{
-  margin-top: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
