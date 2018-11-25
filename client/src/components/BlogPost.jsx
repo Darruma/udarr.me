@@ -16,14 +16,12 @@ class BlogPost extends Component {
                 }
             </div>
             {this.state.blog.content.map(element => {
-                if (element.type == 'text')
-                {
+                if (element.type == 'text') {
                     return <div className='article-text'>
-                    {element.value}
+                        {element.value}
                     </div>
                 }
-                else if (element.type == 'equation-block')
-                {
+                else if (element.type == 'equation-block') {
                     return <EquationBlock text={element.value}></EquationBlock>
                 }
             })}
