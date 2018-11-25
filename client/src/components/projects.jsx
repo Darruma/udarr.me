@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Project from './project'
-import Filters from './filters'
+import Project from './Project'
+import Filters from './Filters'
 import '../css/projects.css'
 import { CSSTransitionGroup } from 'react-transition-group'
 

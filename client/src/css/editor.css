@@ -1,0 +1,12 @@
+.editor-container
+{
+    display: flex;
+    flex-direction: row;
+
+}
+.editor-view
+{
+    width: 50vw;
+    margin-top: 100px;
+    margin-bottom: 100px
+}

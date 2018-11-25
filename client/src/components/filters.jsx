@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/filters.css'
-import Filter from './filter'
+import Filter from './Filter'
 class Filters extends Component {
 	state = { enabled: false };
 	render() {

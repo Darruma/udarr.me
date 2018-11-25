@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Login from './components/login';
-import Projects from './components/projects';
-import Blog from './components/blog'
-import Main from './components/main'
+import Login from './components/Login';
+import Projects from './components/Projects';
+import Blog from './components/Blog'
+import Main from './components/Main'
 import BlogPost from './components/BlogPost'
 import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
 class App extends Component {
