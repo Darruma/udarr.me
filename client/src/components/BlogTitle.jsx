@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Blog from './blog';
+import Blog from './Blog';
 import { Link } from 'react-router-dom'
 
 class BlogTitle extends Component {
