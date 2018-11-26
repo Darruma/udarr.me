@@ -30,7 +30,7 @@ app.use(
 );
 app.use('/api', dashboard);
 app.use('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 module.exports = app;
