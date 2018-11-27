@@ -17,8 +17,7 @@ class BlogEditor extends Component {
         return (<div className='editor-container'>
             <div className='editor-typing'>
             <input className='editor-title-input' onChange={this.handleTitleChange}></input>
-                <textarea className='editor-text-input'></textarea>
-
+                <textarea className='editor-text-input' onChange={this.handleContentChange}></textarea>
             </div>
             <div className='editor-view'>
                 <BlogPost blog={this.state.blog}>
@@ -31,6 +30,18 @@ class BlogEditor extends Component {
         var blog_changed = this.state.blog;
         blog_changed.title = e.target.value
         this.setState({ blog: blog_changed })
+    }
+    handleContentChange = (e) =>
+    {
+        e.preventDefault()
+        var blog_content = e.target.value.split("\n").filter(e => e != "");
+        var blog_changed = this.state.blog;
+        blog_changed.content = blog_content.map(e => {
+            return{
+            type:'text',value:e
+            }
+        })
+        this.setState({blog:blog_changed})
     }
     componentDidMount = () => {
         // fetch('/api/authenticate')

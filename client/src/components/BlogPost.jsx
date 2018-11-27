@@ -20,6 +20,7 @@ class BlogPost extends Component {
             {this.props.blog.content.map(element => {
                 if (element.type == 'text') {
                     return <div className='article-text'>
+                    
                         {element.value}
                     </div>
                 }
