@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import EquationBlock from './EquationBlock'
 import '../App.css'
 class BlogPost extends Component {
+
+    state = {
+        blog:
+        {
+            title:'Test post please ignore',
+            content:[]
+        }
+    }
     render() {
         return (<div className='centered-container'>
             <div className='btitle'>

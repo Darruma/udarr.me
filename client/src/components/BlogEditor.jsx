@@ -1,44 +1,41 @@
-import React , { Component } from 'react'
+import React, { Component } from 'react'
 import '../css/editor.css'
 import { Redirect } from 'react-router-dom'
-class BlogEditor extends Component
-{
-    state ={
-        blog:{
-            title:'',
-            content:[]
+import BlogPost from './BlogPost'
+class BlogEditor extends Component {
+    state = {
+        blog: {
+            title: '',
+            content: []
         },
-        loggedIn:true
+        loggedIn: true
     }
-    render()
-    {
-        if (!this.state.loggedIn)
-        {
+    render() {
+        if (!this.state.loggedIn) {
             return (<Redirect to='/'></Redirect>)
         }
-        <div className='editor-container'>
-        <input onChange={this.handleTitleChange}></input>
+        return (<div className='editor-container'>
             <div className='editor-typing'>
+            <input className='editor-title-input' onChange={this.handleTitleChange}></input>
+                <textarea className='editor-text-input'></textarea>
 
             </div>
-        <div className='editor-view'>
-            <BlogPost blog={this.state.blog}>
-            </BlogPost>
-        </div>
-        </div>
+            <div className='editor-view'>
+                <BlogPost blog={this.state.blog}>
+                </BlogPost>
+            </div>
+        </div>)
     }
-    handleTitleChange = (e) =>
-    {
+    handleTitleChange = (e) => {
         e.preventDefault();
         var blog_changed = this.state.blog;
         blog_changed.title = e.target.value
-        this.setState({blog:blog_changed})
+        this.setState({ blog: blog_changed })
     }
-    componentDidMount = () =>
-    {
-        fetch('/api/authenticate')
-        .then(res => res.json())
-        .then(res => this.setState({loggedIn:res.success}))
+    componentDidMount = () => {
+        // fetch('/api/authenticate')
+        // .then(res => res.json())
+        // .then(res => this.setState({loggedIn:res.success}))
     }
 }
 export default BlogEditor

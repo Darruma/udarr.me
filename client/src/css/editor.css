@@ -2,12 +2,34 @@
 {
     display: flex;
     flex-direction: row;
-    margin:70px 100px;
-    box-shadow: 5px 10px 14px #888888;
+    height: 100vh;
+    width: 100vw;
 }
 .editor-view
 {
-    width: 50vw;
-    margin: 70px 100px;
-    box-shadow: 5px 10px 18px #888888;
+    border: 1px solid grey;
+    width: 50%;
+}
+.editor-typing
+{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.editor-text-input
+{
+    resize:none;
+    font-size: 20px;
+    height: 100%
+}
+.editor-title-input
+{
+    align-self: center;
+    justify-self: center;
+    font-size: 20px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+
 }
