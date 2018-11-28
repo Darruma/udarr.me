@@ -33,12 +33,15 @@ class BlogEditor extends Component {
     }
     handleContentChange = (e) =>
     {
-        e.preventDefault()
-        var blog_content = e.target.value.split("\n").filter(e => e != "");
+        var content = e.target.value;
         var blog_changed = this.state.blog;
+        e.preventDefault()
+        
+        var blog_content =  content.split("\n").filter(e => e != "");
+        
         blog_changed.content = blog_content.map(e => {
             return{
-            type:'text',value:e
+            type:'article_text',value:e
             }
         })
         this.setState({blog:blog_changed})

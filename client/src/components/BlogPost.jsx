@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import EquationBlock from './EquationBlock'
 import '../App.css'
+import InlineText from './InlineText';
 class BlogPost extends Component {
 
     state = {
         blog:
         {
-            title:'Test post please ignore',
-            content:[]
+            title: 'Test post please ignore',
+            content: []
         }
     }
     render() {
@@ -18,10 +19,9 @@ class BlogPost extends Component {
                 }
             </div>
             {this.props.blog.content.map(element => {
-                if (element.type == 'text') {
+                if (element.type == 'article_text') {
                     return <div className='article-text'>
-                    
-                        {element.value}
+                        <InlineText value={element.value}></InlineText>
                     </div>
                 }
                 else if (element.type == 'equation-block') {
@@ -30,6 +30,6 @@ class BlogPost extends Component {
             })}
         </div>)
     }
-    
+
 }
 export default BlogPost

@@ -6,7 +6,7 @@ class EquationBlock extends Component
     render()
     {
         
-        return (<Mathjax.Context input='ascii'>
+        return (<Mathjax.Context input='tex'>
                 <div>
                     <Mathjax.Node>{this.props.text}</Mathjax.Node>
                 </div>
