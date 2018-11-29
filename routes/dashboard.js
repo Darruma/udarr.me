@@ -61,11 +61,4 @@ router.post('/editproject', (req, res) => {
 });
 
 
-router.get('/blog',(req,res)=>{
-
-	return res.json(
-	{
-		message:'kek'
-	})
-})
 module.exports = router;
