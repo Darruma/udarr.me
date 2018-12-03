@@ -15,6 +15,7 @@ class Main extends Component
                 <Link to="/projects" className='links'>Projects</Link>
                 <Link to="/photography" className='links'>Photography</Link>
                 <Link to="/blog" className='links'>Blog</Link>
+                <Link to="/editor" className='links'>Editor</Link>
                 <a className='links' href="https://github.com/Darruma">Github</a>
                 </div>
             </div>

@@ -17,7 +17,7 @@ app.enable('trust proxy');
 app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({ secret: 'yeet', resave: false, saveUninitialized: true }));
+app.use(session({ secret: 'linor', resave: false, saveUninitialized: true }));
 
 
 app.use(express.static(path.join(__dirname,'client','build')));
