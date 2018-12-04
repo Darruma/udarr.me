@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../css/editor.css'
+import 'katex/dist/katex.min.css';
 class View extends Component
 {
     render()
