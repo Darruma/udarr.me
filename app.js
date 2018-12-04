@@ -5,15 +5,18 @@ const bodyParser = require('body-parser');
 const app = express();
 const session = require('express-session');
 app.enable('trust proxy');
-//  app.use(function(req, res, next) {
-//  	if (req.secure) {
-//  		// request was via https, so do no special handling
-//  		next();
-//  	} else {
-//  		// request was via http, so redirect to https
-//  		res.redirect('https://' + req.headers.host + req.url);
-//  	}
-//  });
+ app.use(function(req, res, next) {
+	 if(process.env.PRODUCTION)
+	 {
+ 	if (req.secure) {
+ 		// request was via https, so do no special handling
+ 		next();
+ 	} else {
+ 		// request was via http, so redirect to https
+ 		res.redirect('https://' + req.headers.host + req.url);
+	 }
+	}
+ });
 app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
