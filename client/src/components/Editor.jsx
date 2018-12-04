@@ -24,7 +24,6 @@ class Editor extends Component {
         this.setState({ content: e.target.value.split("\n").filter(e => e !== "") });
     }
     parseTex = () => {
-        console.log(this.state.content)
         var equation_content = []
         for (var i = 0; i < this.state.content.length; i++) {
             if (this.state.content[i] == "\\block") {
@@ -39,39 +38,49 @@ class Editor extends Component {
             else {
                 // Parse inline text here
                 var paragraph = this.state.content[i];
-                console.log(paragraph)
-                var t = 0
-               
-                for(var j =0; j < paragraph.length;j++)
-                {
+
+                for (var j = 0; j < paragraph.length; j++) {
                     var currentIndex = j
-                    if(paragraph[currentIndex] == '$')
-                    {
+                    console.log(paragraph[currentIndex])
+                    if (paragraph[currentIndex] == '$') {
+                        currentIndex = currentIndex + 1
                         var eq_text = ''
-                        while(paragraph[currentIndex] != '$')
-                        {
-                            eq_text = paragraph[currentIndex];
+                        while (paragraph[currentIndex] != '$' && currentIndex < paragraph.length) {
+                            
+                            eq_text = eq_text + paragraph[currentIndex];
                             currentIndex += 1
                         }
-                        j = currentIndex + 2
+                        if(eq_text)
+                        {
+                            j = currentIndex
+                            equation_content.push(
+                                {
+                                    type:'inline_equation',
+                                    value:<TeX>{eq_text}</TeX>
+                                }
+                            )
+                        }
                     }
-                    else
-                    {
+                    else {
                         var in_text = ''
-                        while( paragraph[currentIndex] != '$')
-                        {
-                            in_text = paragraph[currentIndex];
+                        
+                        while (paragraph[currentIndex] != '$' &&  currentIndex < paragraph.length) {
+                            in_text = in_text + paragraph[currentIndex];
                             currentIndex += 1
                         }
-                        equation_content.push(
-                            {
-                                type:'inline_text',
-                                value:<p>{in_text}</p>
-                            }
-                        )
+                        
+                        if (in_text) {
+                            j = currentIndex - 1
+                            equation_content.push(
+                                {
+                                    type: 'inline_text',
+                                    value: <p>{in_text}</p>
+                                }
+                            )
+                        }
                     }
                 }
-             
+
             }
         }
         console.log(equation_content)
