@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import EquationBlock from './EquationBlock'
+import View from './View'
 import 'katex/dist/katex.min.css';
+import '../css/editor.css'
 import TeX from '@matejmazur/react-katex';
 class Editor extends Component {
     state = {
@@ -10,22 +12,35 @@ class Editor extends Component {
     }
     render() {
         return (
-            <div>
-                <textarea onChange={this.onTextChange}>
+            <div className='editor-container'>
+                
+                <textarea className='editor-box editor-input' onChange={this.onTextChange}>
 
                 </textarea>
-                <button onClick={(e) => this.parseTex()}>Click</button>
-
+                <button onClick={this.parseTex}>a</button>
+                <View data={this.state.rendered}></View>
             </div>)
     }
 
     onTextChange = (e) => {
         e.preventDefault();
-        this.setState({ content: e.target.value.split("\n").filter(e => e !== "") });
+        this.setState({ content: e.target.value.split("\n") });
     }
-    parseTex = () => {
+    parseTex = (e) => {
+        console.log(this.state.content)
+        e.preventDefault()
         var equation_content = []
         for (var i = 0; i < this.state.content.length; i++) {
+
+            if(this.state.content[i] == "")
+            {
+                equation_content.push(
+                    {
+                        type:'break',
+                        value:<br></br>
+                    }
+                )
+            }
             if (this.state.content[i] == "\\block") {
                 var blockEquationComponent = <EquationBlock value={this.state.content[i + 1]}></EquationBlock>
                 equation_content.push(
@@ -74,7 +89,7 @@ class Editor extends Component {
                             equation_content.push(
                                 {
                                     type: 'inline_text',
-                                    value: <p>{in_text}</p>
+                                    value: <span>{in_text}</span>
                                 }
                             )
                         }
@@ -83,7 +98,7 @@ class Editor extends Component {
 
             }
         }
-        console.log(equation_content)
+       this.setState({rendered:equation_content},()=> console.log(this.state.rendered))
     }
 
 }
