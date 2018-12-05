@@ -36,7 +36,23 @@ class Editor extends Component {
     }
     componentDidMount()
     {
-       
+      var id = this.props.match.params.id;
+      if(id)
+      {
+          // fetch editor data
+          fetch('/api/editor/' + id)
+          .then(res => res.json())
+          .then(res =>
+            {
+                if (res.success)
+                {
+                    console.log(res.data)
+                }
+                else{
+                    console.log(res.message)
+                }
+            })
+      }
     }
     parseTex = (e) => {
         var equation_content = []
