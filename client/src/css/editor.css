@@ -1,7 +1,12 @@
+.container
+{
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
 .editor-container
 {
     display: flex;
-    flex-direction: row;
     height: 100vh;
     width: 100vw;
 }
@@ -12,14 +17,28 @@
     font-size: 13px;
     font-weight: 500;
     word-wrap:break-word;
+    padding: 20px;
 }
 .editor-box
 {
-    resize:none;
+    border: 1px solid darkgrey;
     width: 50%;
-    padding:20px;
 }
 .editor-input
 {
-    font-size: 13px;
+    font-size: 15px;
+    outline:none;
+    resize:none;
+    padding: 20px;
+    box-sizing: border-box; 
+}
+.editor-header
+{
+    height: 10%;
+}
+.inline-text
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
 }
