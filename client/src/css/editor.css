@@ -35,6 +35,16 @@
 .editor-header
 {
     height: 10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap
+}
+
+.editor-header-button
+{
+    height: 100%;
+    width: 25%;
+    
 }
 .inline-text
 {
@@ -42,3 +52,4 @@
     margin-bottom: 10px;
     display: block;
 }
+

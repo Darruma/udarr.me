@@ -9,16 +9,32 @@ class Editor extends Component {
         title: [],
         content: [],
         rendered: [],
+        title:'Default',
         timeout: null
     }
     render() {
         return (
             <div className='container'>
-                <header className='editor-header'></header>
+                <header className='editor-header'>
+                <div className='editor-header-button' onClick={this.handleSettingsModal}>
+                    Settings
+                </div>
+                <div className='editor-header-button'>
+                    New
+                </div>
+                <div className='editor-header-button'>
+                    Save
+                </div>
+                <div className='editor-header-button' onClick={this.uploadContent}>
+                    Upload
+                </div>
+
+               
+                </header>
                 <div className='editor-container'>
                     <textarea className='editor-box editor-input' onChange={this.onTextChange}>
                     </textarea>
-                    <View data={this.state.rendered}></View>
+                    <View title={this.state.title} data={this.state.rendered}></View>
                 </div>
             </div>)
     }
@@ -34,6 +50,25 @@ class Editor extends Component {
         })
 
     }
+
+    handleSettingsModal = (e) =>
+    {
+        e.preventDefault()
+    }
+    uploadContent = () =>
+    {
+        fetch('api/editor/upload', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({
+                id:'someid',
+                title:this.state.title,
+                latex:this.state.content
+            })
+        });
+    }
     componentDidMount()
     {
       var id = this.props.match.params.id;
@@ -46,10 +81,13 @@ class Editor extends Component {
             {
                 if (res.success)
                 {
-                    console.log(res.data)
+                    this.setState({
+                        title:res.title,
+                        content:res.latex
+                    })
                 }
                 else{
-                    console.log(res.message)
+                // Show modal / redirect
                 }
             })
       }
