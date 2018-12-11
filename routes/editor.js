@@ -11,7 +11,10 @@ router.get('/editor/:id',(req,res)=>
       return res.json(
           {
               success:true,
-              data:latexData
+              data:{
+                  title:latexData.title,
+                  latex: latexData.latex,
+              }
           }
       )
   }
@@ -27,5 +30,32 @@ router.get('/editor/:id',(req,res)=>
   }
 });
 
+router.post('/editor/upload',(req,res) =>
+{
+    const uploadData = req.body;
+    const { id } = uploadData;
+    const { title } = uploadData;
+    const { latex } = uploadData;
+    if(id in editorData)
+    {
+        return res.json(
+            {
+                success:false,
+                message:'Id already used'
+            }
+        )
+    }
+    else{
+        editorData[id] = {
+            title:title,
+            body:latex
+        };
+        fs.writeFileSync('./blogData.json',JSON.stringify(editorData,null,2));
+        return res.json({
+            success:true,
+            message:'Upload successful'
+        })
+    }
+})
 
 module.exports = router;
