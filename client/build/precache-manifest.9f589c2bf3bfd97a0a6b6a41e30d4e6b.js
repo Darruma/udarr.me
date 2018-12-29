@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "c9d5a32d1fc4b3fa10f87a8e2859a1f3",
-    "url": "/static/media/KaTeX_Main-Italic.c9d5a32d.woff2"
+    "revision": "25efa5c1296d721b75ef",
+    "url": "/static/css/main.3b99ded5.chunk.css"
   },
   {
-    "revision": "1bc73bd33a22d2bfad3a",
-    "url": "/static/css/main.ce8d4c1a.chunk.css"
+    "revision": "25efa5c1296d721b75ef",
+    "url": "/static/js/main.25efa5c1.chunk.js"
   },
   {
-    "revision": "424335d97ef5548890673af99f4136b4",
-    "url": "/static/media/KaTeX_Main-Regular.424335d9.ttf"
+    "revision": "79bd562a060f6f726b1c",
+    "url": "/static/css/1.6c46ae0b.chunk.css"
   },
   {
-    "revision": "f40d57407b4f4f33f1b8",
-    "url": "/static/js/1.f40d5740.chunk.js"
+    "revision": "79bd562a060f6f726b1c",
+    "url": "/static/js/1.79bd562a.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -28,12 +28,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Size1-Regular.df2ac4dc.woff"
   },
   {
-    "revision": "aec9a6799841d00923821060d396dad1",
-    "url": "/static/media/KaTeX_Size2-Regular.aec9a679.woff"
-  },
-  {
     "revision": "6dbdad7ae27338101bfd05c181891588",
     "url": "/static/media/KaTeX_Size2-Regular.6dbdad7a.woff2"
+  },
+  {
+    "revision": "aec9a6799841d00923821060d396dad1",
+    "url": "/static/media/KaTeX_Size2-Regular.aec9a679.woff"
   },
   {
     "revision": "dc7be1610075c0ca8581477f050444df",
@@ -44,12 +44,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Size3-Regular.f1a090a4.woff"
   },
   {
-    "revision": "1571003843c39b73f69bb9ffafc6b51c",
-    "url": "/static/media/KaTeX_Size4-Regular.15710038.woff"
-  },
-  {
     "revision": "ecd52e1e2f0cc1b6d4d8d29db4c792c9",
     "url": "/static/media/KaTeX_Size4-Regular.ecd52e1e.woff2"
+  },
+  {
+    "revision": "1571003843c39b73f69bb9ffafc6b51c",
+    "url": "/static/media/KaTeX_Size4-Regular.15710038.woff"
   },
   {
     "revision": "42a984df9caeef0f96fa6234a41ff1a3",
@@ -76,6 +76,10 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_SansSerif-Italic.ff631379.woff2"
   },
   {
+    "revision": "ec3e4a5540df883fa3147f8a5e83287b",
+    "url": "/static/media/KaTeX_Script-Regular.ec3e4a55.woff2"
+  },
+  {
     "revision": "fd6852d4ac7b37575a7fea0708355ce3",
     "url": "/static/media/KaTeX_SansSerif-Regular.fd6852d4.woff2"
   },
@@ -84,24 +88,16 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Script-Regular.ae1b9702.woff"
   },
   {
-    "revision": "ec3e4a5540df883fa3147f8a5e83287b",
-    "url": "/static/media/KaTeX_Script-Regular.ec3e4a55.woff2"
-  },
-  {
-    "revision": "e3717988fb1ebd63efd10fd2e05568bc",
-    "url": "/static/media/KaTeX_Size2-Regular.e3717988.ttf"
-  },
-  {
     "revision": "923e515d161a541174ba0f71e1adb54e",
     "url": "/static/media/KaTeX_Size1-Regular.923e515d.ttf"
   },
   {
-    "revision": "ae9ca32213bdef3d2b7006c743ffdb8a",
-    "url": "/static/media/KaTeX_Size3-Regular.ae9ca322.ttf"
-  },
-  {
     "revision": "b790cf180d62ae91960d6b46cbb3905e",
     "url": "/static/media/KaTeX_Size4-Regular.b790cf18.ttf"
+  },
+  {
+    "revision": "e3717988fb1ebd63efd10fd2e05568bc",
+    "url": "/static/media/KaTeX_Size2-Regular.e3717988.ttf"
   },
   {
     "revision": "c7e386dd35c841d1a8f9e11fd1a11010",
@@ -116,10 +112,6 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Bold.b1a87945.woff2"
   },
   {
-    "revision": "8c43064fdc3bf45ee62e8a22e856a793",
-    "url": "/static/media/KaTeX_Fraktur-Bold.8c43064f.woff"
-  },
-  {
     "revision": "e21a6db7f372856ebfd6a278b56b8c7d",
     "url": "/static/media/KaTeX_Fraktur-Regular.e21a6db7.woff2"
   },
@@ -128,32 +120,36 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.801690bb.woff"
   },
   {
+    "revision": "8c43064fdc3bf45ee62e8a22e856a793",
+    "url": "/static/media/KaTeX_Fraktur-Bold.8c43064f.woff"
+  },
+  {
     "revision": "2484936f0b130a0d2bb745766058b46d",
     "url": "/static/media/KaTeX_Main-BoldItalic.2484936f.woff2"
   },
   {
-    "revision": "1bc73bd33a22d2bfad3a",
-    "url": "/static/js/main.1bc73bd3.chunk.js"
-  },
-  {
-    "revision": "4b3b168e2b5e74b24c10acd7316488d1",
-    "url": "/static/media/KaTeX_Math-Italic.4b3b168e.woff2"
+    "revision": "c9d5a32d1fc4b3fa10f87a8e2859a1f3",
+    "url": "/static/media/KaTeX_Main-Italic.c9d5a32d.woff2"
   },
   {
     "revision": "96b229786edd80e54fa2b68c5f032960",
     "url": "/static/media/KaTeX_Math-BoldItalic.96b22978.woff2"
   },
   {
-    "revision": "6091397cdc326cf8c8f7b648e2341483",
-    "url": "/static/media/KaTeX_Math-BoldItalic.6091397c.woff"
-  },
-  {
     "revision": "dc91856176c1350f1ee303851a422277",
     "url": "/static/media/KaTeX_Math-Italic.dc918561.woff"
   },
   {
+    "revision": "6091397cdc326cf8c8f7b648e2341483",
+    "url": "/static/media/KaTeX_Math-BoldItalic.6091397c.woff"
+  },
+  {
     "revision": "e08eb4331e7db133b6d2e355cd74724a",
     "url": "/static/media/KaTeX_SansSerif-Bold.e08eb433.woff"
+  },
+  {
+    "revision": "4b3b168e2b5e74b24c10acd7316488d1",
+    "url": "/static/media/KaTeX_Math-Italic.4b3b168e.woff2"
   },
   {
     "revision": "ada012c291bf50cf9a349ceb98df6659",
@@ -168,8 +164,8 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Typewriter-Regular.efae4055.woff2"
   },
   {
-    "revision": "2057e5cbb505134b0a620e681abc5070",
-    "url": "/static/media/KaTeX_Main-Bold.2057e5cb.woff2"
+    "revision": "ae9ca32213bdef3d2b7006c743ffdb8a",
+    "url": "/static/media/KaTeX_Size3-Regular.ae9ca322.ttf"
   },
   {
     "revision": "a4ed2b019d879955fa4c53795b385a8f",
@@ -180,6 +176,10 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Main-Italic.6d2cd8f0.woff"
   },
   {
+    "revision": "2057e5cbb505134b0a620e681abc5070",
+    "url": "/static/media/KaTeX_Main-Bold.2057e5cb.woff2"
+  },
+  {
     "revision": "66bab6babbbcb45ee13301e20516eb6a",
     "url": "/static/media/KaTeX_SansSerif-Italic.66bab6ba.ttf"
   },
@@ -188,28 +188,28 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_SansSerif-Regular.066914d0.ttf"
   },
   {
-    "revision": "6a862f8ff236e321e04c326a32eb8a49",
-    "url": "/static/media/KaTeX_Typewriter-Regular.6a862f8f.woff"
-  },
-  {
     "revision": "85007a59906b95d94b5b06619fde46aa",
     "url": "/static/media/KaTeX_Script-Regular.85007a59.ttf"
   },
   {
-    "revision": "b2d929640f68a1bd67eff3ebd331159a",
-    "url": "/static/media/KaTeX_AMS-Regular.b2d92964.woff"
+    "revision": "6a862f8ff236e321e04c326a32eb8a49",
+    "url": "/static/media/KaTeX_Typewriter-Regular.6a862f8f.woff"
   },
   {
     "revision": "cd28a1d7203aef546e0f7733d98e8ea9",
     "url": "/static/media/KaTeX_AMS-Regular.cd28a1d7.woff2"
   },
   {
-    "revision": "9b1486220b5ca974aaceebbf70e1f087",
-    "url": "/static/media/KaTeX_Fraktur-Bold.9b148622.ttf"
+    "revision": "b2d929640f68a1bd67eff3ebd331159a",
+    "url": "/static/media/KaTeX_AMS-Regular.b2d92964.woff"
   },
   {
     "revision": "0dee09596a43df990fdefbe5ed207b2b",
     "url": "/static/media/KaTeX_Main-Bold.0dee0959.woff"
+  },
+  {
+    "revision": "9b1486220b5ca974aaceebbf70e1f087",
+    "url": "/static/media/KaTeX_Fraktur-Bold.9b148622.ttf"
   },
   {
     "revision": "576266ad7ee52fe0285e1f8a76163d65",
@@ -256,11 +256,11 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_AMS-Regular.dffd527d.ttf"
   },
   {
-    "revision": "f40d57407b4f4f33f1b8",
-    "url": "/static/css/1.e196db3e.chunk.css"
+    "revision": "424335d97ef5548890673af99f4136b4",
+    "url": "/static/media/KaTeX_Main-Regular.424335d9.ttf"
   },
   {
-    "revision": "7ed70491b3d280aed6dcd9132fa81330",
+    "revision": "5be0b346bc9a47ee362e8d30f508c77f",
     "url": "/index.html"
   }
 ];
