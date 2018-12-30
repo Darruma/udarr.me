@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Login from './components/Login';
-import Projects from './components/Projects';
-import Main from './components/Main'
+import Login from './components/login';
+import Projects from './components/projects';
+import Main from './components/main'
 import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
-import Editor from './components/Editor';
 class App extends Component {
 	render() {
 		return (
