@@ -11,7 +11,10 @@ display: -ms-flexbox;
  justify-content: center;
 flex-wrap: wrap;
 }
-
+.filter-text
+{
+	cursor: pointer;
+}
 .filter
 {
 	font-family: Nunito,sans-serif;

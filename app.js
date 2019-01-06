@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
 app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({ secret: 'linor', resave: false, saveUninitialized: true }));
+app.use(session({ secret: "oasdoasdoiasoidiasd", resave: false, saveUninitialized: true }));
 
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
