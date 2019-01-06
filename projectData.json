@@ -3,6 +3,7 @@
     {
       "title":"Texpen",
       "content":"A resource for creating web posts using LaTex ",
+      "link":"http://texpen.herokuapp.com/",
       "image":"/images/texpen.jpg",
       "technologies":["HTML","CSS","Javascript","Node","Express","React"],
       "id":1
