@@ -9,7 +9,7 @@ class Projects extends Component
 	state = {
 		projects: [],
 		renderedProjects: [],
-		filters: [ 'HTML', 'CSS', 'Javascript', 'Node', 'Express', 'React', 'MongoDB', 'Bootstrap', 'C#', 'Unity',"Python" ],
+		filters: [ 'HTML', 'CSS', 'Javascript', 'Node', 'Express', 'React', 'MongoDB', 'Bootstrap', 'C#', 'Unity',"Python","Java","C"],
 		activatedFilters:[]
 	};
 
