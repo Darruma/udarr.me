@@ -1,12 +1,20 @@
 {
   "projects":[
     {
+      "title":"Texpen",
+      "content":"A resource for creating web posts using LaTex ",
+      "image":"/images/texpen.jpg",
+      "technologies":["HTML","CSS","Javascript","Node","Express","React"],
+      "id":1
+
+    },
+    {
       "title":"A level Computer Science",
       "link":"https://github.com/Darruma/alevelcomputerscience",
       "image":"/images/alevelcomputerscience.jpg",
       "content":"Interactive resources for learning A Level Computer Science",
       "technologies":["HTML","CSS","Javascript","Node","Express","MongoDB","Bootstrap"],
-      "id":1
+      "id":2
     },
     {
       "title":"Udarr.me",
@@ -14,7 +22,7 @@
       "image":"/images/udarr.me.jpg",
       "content":"Check out the code used to create this website! ",
       "technologies":["HTML","CSS","Javascript","Node","Express","React"],
-      "id":2
+      "id":3
     },
     {
       "title":"Ricochet",
@@ -22,7 +30,7 @@
       "image":"/images/ricochet.jpg",
       "content":"A simple android shooting game made in the unity engine",
       "technologies":["C#","Unity"],
-      "id":3,
+      "id":4,
       "webpage":"https://play.google.com/store/apps/details?id=com.Darruma.Ricochet2"
      
     },
@@ -32,7 +40,7 @@
       "image":"/images/isomorph.jpg",
       "content":"A tool for creating skeletal formulae made in Unity",
       "technologies":["C#","Unity"],
-      "id":4,
+      "id":5,
       "webpage":"/demo/iso"
     },
     {
@@ -40,8 +48,8 @@
       "link":"https://github.com/Darruma/twitter-sentiment-analysis",
       "image":"/images/twitter-sentiment-analysis.jpg",
       "content":"Analyse a users sentiment using the twitter API",
-       "technologies":["Node"],
-      "id":5
+      "technologies":["Node"],
+      "id":6
     },
     {
       "title":"Comments.js",
@@ -49,7 +57,7 @@
       "image":"/images/comments.js.jpg",
       "content":"A simple comment system made using the MERN stack",
       "technologies":["HTML","CSS","Javascript","Node","MongoDB","Express" ,"React"],
-      "id":6
+      "id":7
     },
     {
       "title":"Weather App",
@@ -57,7 +65,7 @@
       "image":"/images/weatherapp.jpg",
       "content":"A 5 day forecast of the weather using the OpenWeatherMap API",
       "technologies":["HTML","CSS","Javascript","Node","Express","React"],
-      "id":7
+      "id":8
     },
     {
       "title":"String Matching",
@@ -65,7 +73,23 @@
       "image":"/images/stringmatching.jpg",
       "content":"String matching algorithms implemented in python ",
       "technologies":["C","Python"],
-      "id":8
+      "id":9
+    },
+    {
+      "title":"Java Casino",
+      "link":"https://github.com/Darruma/java_casino",
+      "image":"/images/java_casino.jpg",
+      "content":"A singleplayer blackjack and roulette game made in java",
+      "technologies":["Java"],
+      "id":10
+    },
+    {
+      "title":"Little Man Computer",
+      "link":"https://github.com/Darruma/LittleManComputer",
+      "image":"/images/LittleManComputer.jpg",
+      "content":"A LMC implementation in java",
+      "technologies":["Java"],
+      "id":11
     },
     {
       "title":"Project Euler",
@@ -73,7 +97,7 @@
       "image":"/images/project-euler.jpg",
       "content":"Solutions to the project euler questions in python",
       "technologies":["Python"],
-      "id":9
+      "id":12
     }
   ]
 }
