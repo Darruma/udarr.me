@@ -27,7 +27,7 @@ class Projects extends Component
 						content={element.content}
 						link={element.link}
 						technologies={element.technologies}
-						image={element.image}
+						image={element.name}
 						key={element.id}
 						webpage={element.webpage}
 					/>
@@ -46,10 +46,9 @@ class Projects extends Component
 					if (this.state.activatedFilters.length == 0) {
 						return true;
 					}
-					return this.state.activatedFilters.every((val) => element.technologies.includes(val));
+					return this.state.activattedFilters.every((val) => element.technologies.includes(val));
 				})
-			},
-			() => console.log(this.state.renderedProjects)
+			}
 		);
 	};
 	addFilter = (filter) => {
