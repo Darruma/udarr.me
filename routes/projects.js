@@ -31,7 +31,7 @@ function getProjects()
 			}
 			fetch(element.languages_url + '?access_token=' +process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res =>
 			{
-				technologies = technologies.concat(Object.keys(res))
+				technologies = technologies.concat(Object.keys(res)).map(e => e.toLowerCase())
 				projectData.push(
 					{
 						title:name,
