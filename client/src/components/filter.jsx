@@ -16,11 +16,11 @@ class Filter extends Component {
 		if (!this.state.enabled) {
 			e.preventDefault();
 			this.setState({ enabled: true});
-			this.props.addFilter(this.props.name);
+			this.props.addFilter(this.props.name.toLower());
 		}
 		if (this.state.enabled) {
 			this.setState({ enabled: false });
-			this.props.removeFilter(this.props.name);
+			this.props.removeFilter(this.props.name.toLower());
 		}
 
 	};

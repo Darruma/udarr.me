@@ -26,6 +26,7 @@ function getProjects()
 			if(loc !== -1)
 			{
 				technologies = description.slice(loc,description.length)
+				
 				description = description.slice(description.indexOf('Technologies'))
 			}
 			fetch(element.languages_url + '?access_token=' +process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res =>
