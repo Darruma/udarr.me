@@ -1,5 +1,5 @@
 const express = require('express');
-const dashboard = require('./routes/dashboard');
+const projects = require('./routes/projects');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
@@ -30,7 +30,7 @@ app.use(
 		extensions: ['html', 'htm']
 	})
 );
-app.use('/api', dashboard);
+app.use('/api', projects);
 app.use('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
