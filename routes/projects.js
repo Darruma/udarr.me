@@ -18,7 +18,7 @@ function getProjects()
 		//console.log(res)
 		res.forEach(element => {
 			var { name } = element
-			var { updated_at } = element
+			var { pushed_at } = element
 			var { description } = element
 			var technologies = [];
 			// Search through description for technologies
@@ -37,7 +37,7 @@ function getProjects()
 						content: description,
 						link:element.html_url,
 						technologies:technologies,
-						id:updated_at,
+						id:pushed_at,
 						webpage:element.homepage
 					}
 				)
