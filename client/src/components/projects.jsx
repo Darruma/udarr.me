@@ -27,7 +27,7 @@ class Projects extends Component
 						content={element.content}
 						link={element.link}
 						technologies={element.technologies}
-						image={element.name}
+						image={element.title}
 						key={element.id}
 						webpage={element.webpage}
 					/>
