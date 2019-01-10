@@ -46,7 +46,7 @@ class Projects extends Component
 					if (this.state.activatedFilters.length == 0) {
 						return true;
 					}
-					return this.state.activattedFilters.every((val) => element.technologies.includes(val));
+					return this.state.activatedFilters.every((val) => element.technologies.includes(val));
 				})
 			}
 		);
