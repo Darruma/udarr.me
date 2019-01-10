@@ -4,7 +4,7 @@ var projectData = []
 const router = express.Router();
 require('dotenv').config()
 getProjects()
-setInterval(getProjects,10000)
+setInterval(getProjects,11000)
 
 router.get('/projects', (req, res) => {
 	res.send(projectData);
@@ -43,7 +43,7 @@ function getProjects()
 				)
 				projectData.sort((a,b)=>
 				{
-					return new Date(a.key) - new Date(b.key)
+					return new Date(a.id) - new Date(b.id)
 				})
 			})
 		});
