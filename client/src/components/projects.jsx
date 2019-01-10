@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Project from './project'
 import Filters from './filters'
 import '../css/projects.css'
-import { CSSTransitionGroup } from 'react-transition-group'
 
 class Projects extends Component
 {
@@ -46,7 +45,7 @@ class Projects extends Component
 					if (this.state.activatedFilters.length == 0) {
 						return true;
 					}
-					return this.state.activatedFilters.every((val) => element.technologies.includes(val.toLower()));
+					return this.state.activatedFilters.every((val) => element.technologies.includes(val.toLowerCase()));
 				})
 			}
 		);
