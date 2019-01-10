@@ -43,7 +43,7 @@ function getProjects()
 				)
 				projectData.sort((a,b)=>
 				{
-					return new Date(a.id) - new Date(b.id)
+					return new Date(b.id) - new Date(a.id)
 				})
 			})
 		});
