@@ -4,7 +4,7 @@ var projectData = []
 const router = express.Router();
 require('dotenv').config()
 getProjects()
-setInterval(getProjects, 10000)
+setInterval(getProjects, 60000)
 
 router.get('/projects', (req, res) => {
 	res.send(projectData);
@@ -13,6 +13,7 @@ router.get('/projects', (req, res) => {
 function getProjects() {
 	projectData = []
 	fetch('https://api.github.com/users/Darruma/repos?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
+		console.log(res)
 		res.forEach(element => {
 			var { name } = element
 			var { pushed_at } = element
