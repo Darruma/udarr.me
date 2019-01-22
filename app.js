@@ -21,7 +21,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: "oasdoasdoiasoidiasd", resave: false, saveUninitialized: true }));
 
-
+app.get('/arch.sh',(req,res) =>
+{
+	res.sendFile(path.join(__dirname,'arch.sh'))
+})
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use('/images', express.static(path.join(__dirname, '/uploads')));
 app.use(
