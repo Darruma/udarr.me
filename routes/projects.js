@@ -15,6 +15,7 @@ function getProjects()
 	fetch('https://api.github.com/users/Darruma/repos?access_token=' +process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res =>
 	{
 		console.log(res)
+        projectData = []
 		res.forEach(element => {
 			var { name } = element
 			var { pushed_at } = element
@@ -31,7 +32,6 @@ function getProjects()
 			{
 				console.log(res)
                 technologies = technologies.concat(Object.keys(res))
-				projectData = [];
                 projectData.push(
 					{
 						title:name,
