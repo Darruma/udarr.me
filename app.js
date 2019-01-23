@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const session = require('express-session');
+require('dotenv').config()
 app.enable('trust proxy');
 app.use(function (req, res, next) {
 	if (process.env.PRODUCTION) {
@@ -19,7 +20,7 @@ app.use(function (req, res, next) {
 app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({ secret: "oasdoasdoiasoidiasd", resave: false, saveUninitialized: true }));
+app.use(session({ secret: process.env., resave: false, saveUninitialized: true }));
 
 app.get('/arch.sh',(req,res) =>
 {
