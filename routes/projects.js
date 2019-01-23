@@ -4,7 +4,7 @@ var projectData = []
 const router = express.Router();
 require('dotenv').config()
 getProjects()
-ddsetInterval(getProjects,10000)
+setInterval(getProjects,10000)
 
 router.get('/projects', (req, res) => {
 	res.send(projectData);
