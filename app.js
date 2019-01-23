@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 app.set('json spaces', 2);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({ secret: process.env., resave: false, saveUninitialized: true }));
+app.use(session({ secret: process.env.secret, resave: false, saveUninitialized: true }));
 
 app.get('/arch.sh',(req,res) =>
 {
