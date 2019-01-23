@@ -10,7 +10,7 @@ router.get('/projects', (req, res) => {
 });
 
 function getProjects() {
-	
+
 	fetch('https://api.github.com/users/Darruma/repos?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
 		projectData = []
 		console.log(res)
@@ -19,24 +19,22 @@ function getProjects() {
 			var { pushed_at } = element
 			var { description } = element
 			var technologies = [];
-			// Search through description for technologies
-						technologies = JSON.parse(res.slice(res.indexOf('Technologies')+12, res.length))
-						fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
-							technologies = technologies.concat(Object.keys(res)).map(e => e.toLowerCase())
-							projectData.push(
-								{
-									title: name,
-									content: description,
-									link: element.html_url,
-									technologies: technologies,
-									id: pushed_at,
-									webpage: element.homepage
-								}
-							)
-							projectData.sort((a, b) => {
-								return new Date(b.id) - new Date(a.id)
-							})
-						})
+			fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
+				technologies = Object.keys(res).map(e => e.toLowerCase())
+				projectData.push(
+					{
+						title: name,
+						content: description,
+						link: element.html_url,
+						technologies: technologies,
+						id: pushed_at,
+						webpage: element.homepage
+					}
+				)
+				projectData.sort((a, b) => {
+					return new Date(b.id) - new Date(a.id)
+				})
+			})
 
 		});
 	}
