@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import Project from './project'
 import Filters from './filters'
 import '../css/projects.css'
-import { CSSTransitionGroup } from 'react-transition-group'
 
 class Projects extends Component
 {
 	state = {
 		projects: [],
 		renderedProjects: [],
-		filters: [ 'HTML', 'CSS', 'Javascript', 'Node', 'Express', 'React', 'MongoDB', 'Bootstrap', 'C#', 'Unity',"Python","Java","C"],
+		filters: [ 'HTML', 'CSS', 'Javascript', 'C#',"Python","Java","C"],
 		activatedFilters:[]
 	};
 
@@ -46,7 +45,7 @@ class Projects extends Component
 					if (this.state.activatedFilters.length == 0) {
 						return true;
 					}
-					return this.state.activatedFilters.every((val) => element.technologies.includes(val));
+					return this.state.activatedFilters.every((val) => element.technologies.includes(val.toLowerCase()));
 				})
 			}
 		);
