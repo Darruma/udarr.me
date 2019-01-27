@@ -13,7 +13,7 @@ class Project extends Component {
 					</a>
 					<p>{this.props.content}</p>
 					<a href={this.props.link} className="button alt">
-						<p>Code</p>
+						<p>Repository</p>
 					</a>
 				</div>
 			</div>
