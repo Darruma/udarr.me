@@ -11,8 +11,6 @@ router.get('/projects', (req, res) => {
 function getProjects() {
 	fetch('https://api.github.com/users/Darruma/repos?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
 		projectData = []
-		console.log(res)
-
 		res.forEach(element => {
 			var { name } = element
 			var { pushed_at } = element
