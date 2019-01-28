@@ -2,7 +2,7 @@ const express = require('express');
 const fetch = require('node-fetch');
 var projectData = []
 const router = express.Router();
-setInterval(getProjects, 10000)
+setInterval(getProjects, 60000)
 router.get('/projects', (req, res) => {
 	res.send(projectData);
 });
