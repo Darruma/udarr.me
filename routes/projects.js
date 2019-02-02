@@ -12,6 +12,7 @@ router.get('/projects', (req, res) => {
 function getProjects() {
 
 	fetchRepos().then(res => {
+		console.log(res)
 		res.forEach(element => {
 			fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
 				technologies = Object.keys(res).map(e => e.toLowerCase())
