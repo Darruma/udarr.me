@@ -63,7 +63,7 @@ function addProject(name, description, html_url, technologies, pushed_at, homepa
 			link: html_url,
 			technologies: technologies,
 			id: pushed_at,
-			webpage: element.homepage
+			webpage: homepage
 		}
 	)
 }
