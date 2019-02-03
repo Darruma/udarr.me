@@ -30,6 +30,7 @@ function updateProjects() {
 	console.log('updating projects')
 	fetchRepos().then(res => {
 		var names = res.map(e => e.name)
+		console.log(names)
 		// projectData = projectData.filter(project => {
 			
 		// 	if (names.includes(project.title)) {
