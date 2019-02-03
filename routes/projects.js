@@ -20,9 +20,10 @@ function getProjects() {
 				projectData.sort((a, b) => {
 					return new Date(b.id) - new Date(a.id)
 				})
+				console.log(projectData)
 			})
 		});
-		console.log(projectData)
+		
 	}
 	)
 }
