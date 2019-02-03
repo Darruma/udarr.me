@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 var projectData = []
 const router = express.Router();
 getProjects()
-setInterval(updateProjects, 6000)
+setInterval(updateProjects, 10000)
 
 router.get('/projects', (req, res) => {
 	res.send(projectData);
@@ -31,7 +31,6 @@ function updateProjects() {
 	fetchRepos().then(res => {
 		projectData = projectData.filter(project => {
 			var names = res.map(e => e.name)
-			console.log(project.title)
 			if (names.includes(project.title)) {
 				return true
 			}
