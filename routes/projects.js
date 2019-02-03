@@ -47,7 +47,7 @@ function addProject(name, description, html_url, technologies, pushed_at, homepa
 	// Check if the project is already in project data
 	var projectDataNames = projectData.map(e => e.title)
 	if (projectDataNames.includes(name)) {
-		var indexOfProject = projectDataName.indexOf(name)
+		var indexOfProject = projectDataNames.indexOf(name)
 		projectData[indexOfProject] =
 			{
 				title: name,
