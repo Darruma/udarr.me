@@ -19,7 +19,6 @@ function getProjects() {
 				projectData.sort((a, b) => {
 					return new Date(b.id) - new Date(a.id)
 				})
-				console.log(projectData)
 			})
 		});
 		
@@ -31,7 +30,7 @@ function updateProjects() {
 	console.log('updating projects')
 	fetchRepos().then(res => {
 		projectData = projectData.filter(project => {
-			if (res.map(e => e.name).includes(project.name)) {
+			if (res.map(e => e.name).includes(project.title)) {
 				return true
 			}
 			return false
