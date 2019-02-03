@@ -12,7 +12,7 @@ router.get('/projects', (req, res) => {
 function getProjects() {
 
 	fetchRepos().then(res => {
-		console.log(res)
+		console.log('getting projects from github')
 		res.forEach(element => {
 			fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
 				technologies = Object.keys(res).map(e => e.toLowerCase())
@@ -22,11 +22,13 @@ function getProjects() {
 				})
 			})
 		});
+		console.log(getProjects)
 	}
 	)
 }
 
 function updateProjects() {
+	console.log('updating projects')
 	fetchRepos().then(res => {
 		projectData = projectData.filter(project => {
 			if (res.map(e => e.name).includes(project.name)) {
