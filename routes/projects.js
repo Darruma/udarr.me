@@ -30,14 +30,15 @@ function updateProjects() {
 	console.log('updating projects')
 	fetchRepos().then(res => {
 		var names = res.map(e => e.name)
-		console.log(names)
-		// projectData = projectData.filter(project => {
+		
+		projectData = projectData.filter(project => {
 			
-		// 	if (names.includes(project.title)) {
-		// 		return true
-		// 	}
-		// 	return false
-		// })
+			if (names.includes(project.title)) {
+				return true
+			}
+			return false
+		})
+		console.log(projectData)
 		// console.log('Filtered Projects')
 		// res.forEach(element => {
 		// 	fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
