@@ -12,7 +12,6 @@ router.get('/projects', (req, res) => {
 function getProjects() {
 
 	fetchRepos().then(res => {
-		console.log('getting projects from github')
 		res.forEach(element => {
 			fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
 				technologies = Object.keys(res).map(e => e.toLowerCase())
@@ -37,6 +36,8 @@ function updateProjects() {
 			}
 			return false
 		})
+		console.log('Filtered Projects')
+		console.log(projectData)
 		res.forEach(element => {
 			fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
 				technologies = Object.keys(res).map(e => e.toLowerCase())
