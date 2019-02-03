@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 var projectData = []
 const router = express.Router();
 getProjects()
-setInterval(updateProjects, 10000)
+setInterval(updateProjects, 60000)
 
 router.get('/projects', (req, res) => {
 	res.send(projectData);
@@ -21,7 +21,7 @@ function getProjects() {
 				})
 			})
 		});
-		
+
 	}
 	)
 }
@@ -30,30 +30,27 @@ function updateProjects() {
 	console.log('updating projects')
 	fetchRepos().then(res => {
 		var names = res.map(e => e.name)
-		
+		var projectDataNames = projectData.map(e => e.title)
 		projectData = projectData.filter(project => {
-			
+
 			if (names.includes(project.title)) {
 				return true
 			}
+			console.log('filtered repository')
 			return false
 		})
-		console.log(projectData)
-		// console.log('Filtered Projects')
-		// res.forEach(element => {
-		// 	fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
-		// 		technologies = Object.keys(res).map(e => e.toLowerCase())
-		// 		projectData.forEach(e => {
-		// 			if (e.name !== element.name) {
-		// 				addProject(element.name, element.description, element.html_url, technologies, element.pushed_at, element.homepage)
-		// 			}
-		// 		})
+		res.forEach(element => {
+			fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
+				technologies = Object.keys(res).map(e => e.toLowerCase())
+				if (!projectDataNames.includes(element.name) {
+					addProject(element.name, element.description, element.html_url, technologies, element.pushed_at, element.homepage)
+				}
 
-		// 		projectData.sort((a, b) => {
-		// 			return new Date(b.id) - new Date(a.id)
-		// 		})
-		// 	})
-		// })
+				projectData.sort((a, b) => {
+					return new Date(b.id) - new Date(a.id)
+				})
+			})
+		})
 	})
 }
 function fetchRepos() {
