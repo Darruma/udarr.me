@@ -42,7 +42,7 @@ function updateProjects() {
 		res.forEach(element => {
 			fetch(element.languages_url + '?access_token=' + process.env.PERSONAL_ACCESS_TOKEN).then(res => res.json()).then(res => {
 				technologies = Object.keys(res).map(e => e.toLowerCase())
-				if (!projectDataNames.includes(element.name) {
+				if (!projectDataNames.includes(element.name)) {
 					addProject(element.name, element.description, element.html_url, technologies, element.pushed_at, element.homepage)
 				}
 
