@@ -26,6 +26,13 @@
 	width: 700px
 }
 
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.projects {
+		display: flex;
+		flex-direction: column;
+	}
+  }
 .centered-container
 {
 	display: flex;
