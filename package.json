@@ -20,8 +20,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently --kill-others-on-fail \"nodemon server.js\" \" cd ./client && npm run start\"",
-    "start": "node server.js",
-    "preinstall": "cd client && npm install  && npm run build"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
