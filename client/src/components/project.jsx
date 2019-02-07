@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
+import { Link} from "react-router-dom";
 import '../css/project.css';
 class Project extends Component {
 	render() {
 		return (
 			<div className="project fade-in">
-				<div className="image">
-					<img className="image" src={'/images/'+this.props.image + '.jpg'} alt="" />
-				</div>
-				<div className="content">
-					<a href={this.props.webpage}>
-						<h3>{this.props.title}</h3>
-					</a>
-					<p>{this.props.content}</p>
-					<a href={this.props.link} className="button alt">
-						<p>Repository</p>
-					</a>
-				</div>
+				<Link to={'projects/' + this.props.webpage}>{this.props.title}</Link>
+				<div className='description'>{this.props.content}</div>
 			</div>
 		);
 	}
