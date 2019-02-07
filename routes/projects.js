@@ -8,6 +8,7 @@ setInterval(getProjects, 60000)
 
 router.get('/projects', (req, res) => {
 	res.send(projectData);
+	console.log("projects")
 });
 function getProjects() {
 	fetchRepos().then(res => {

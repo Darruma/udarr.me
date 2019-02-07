@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const session = require('express-session');
 require('dotenv').config()
+console.log("app Running")
 app.enable('trust proxy');
 app.use(function (req, res, next) {
 	if (process.env.PRODUCTION) {
