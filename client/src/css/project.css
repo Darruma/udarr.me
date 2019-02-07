@@ -9,3 +9,15 @@
 	flex-direction: column;
 	margin-bottom: 10px;	
 }
+
+.projects
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.centered-container
+{
+	width: 500px;
+	margin: auto
+}
