@@ -7,12 +7,12 @@ import ProjectsContainer from './components/ProjectsContainer';
 class App extends Component {
 	render() {
 		return (
-			<Router >
+			<Router>
 				<Switch>
 					<Route exact path="/" component={Main}/>
 					<Route path='/projects/:name' component={Article}></Route>
 					<Route path="/projects" component={ProjectsContainer}/>
-					<Route path="/photography" component={Projects}/>
+					<Route path="/photography" component={ProjectsContainer}/>
 				</Switch>
 			</Router>
 
