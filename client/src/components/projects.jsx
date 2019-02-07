@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Project from './project'
 import Filters from './filters'
-import '../css/projects.css'
+import '../css/project.css'
 
 class Projects extends Component {
 
