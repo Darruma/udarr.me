@@ -3,24 +3,19 @@ const fetch = require('node-fetch');
 var projectData = []
 const router = express.Router();
 getProjects()
-setInterval(getProjects, 360000)
+setInterval(getProjects, 60000)
 
 router.get('/projects', (req, res) => {
 	res.send(projectData);
 });
-
 function getProjects() {
-
 	fetchRepos().then(res => {
 		var names = res.map(e => e.name)
 		if (projectData.length !== 0) {
-
 			projectData = projectData.filter(project => {
-
 				if (names.includes(project.title)) {
 					return true
 				}
-				console.log('filtered repository')
 				return false
 			})
 		}
@@ -33,7 +28,6 @@ function getProjects() {
 				})
 			})
 		});
-
 	}
 	)
 }
@@ -45,31 +39,21 @@ function fetchRepos() {
 
 function addProject(name, description, html_url, technologies, pushed_at, homepage) {
 	// Check if the project is already in project data
+	var projectObject = {
+		title: name,
+		content: description,
+		link: html_url,
+		technologies: technologies,
+		id: pushed_at,
+		webpage: homepage
+	}
 	var projectDataNames = projectData.map(e => e.title)
 	if (projectDataNames.includes(name)) {
 		var indexOfProject = projectDataNames.indexOf(name)
-		projectData[indexOfProject] =
-			{
-				title: name,
-				content: description,
-				link: html_url,
-				technologies: technologies,
-				id: pushed_at,
-				webpage: homepage
-			}
-
+		projectData[indexOfProject] = projectObject
 	}
 	else {
-		projectData.push(
-			{
-				title: name,
-				content: description,
-				link: html_url,
-				technologies: technologies,
-				id: pushed_at,
-				webpage: homepage
-			}
-		)
+		projectData.push(projectObject)
 	}
 }
 

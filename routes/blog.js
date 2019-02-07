@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 router.get('/blog/authenticate',(req,res) =>
 {
     const { username } = req;
@@ -19,5 +18,4 @@ router.get('/blog/:name',(req,res)=>
         }
     )
 })
-
 module.exports = router;
