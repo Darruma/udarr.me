@@ -1,7 +1,10 @@
+.description-box
+{
+	margin-top: 5px;
+}
 .description
 {
-	font-size: 10px;
-	margin-top: 5px;
+	font-size: 12px;
 }
 .project
 {
@@ -10,14 +13,22 @@
 	margin-bottom: 10px;	
 }
 
+.title-link
+{
+	font-size:16px;
+	color: black
+
+}
 .projects
 {
 	display: flex;
 	flex-direction: column;
+	width: 700px
 }
 
 .centered-container
 {
-	width: 500px;
-	margin: auto
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

@@ -5,8 +5,8 @@ class Project extends Component {
 	render() {
 		return (
 			<div className="project fade-in">
-				<Link to={'projects/' + this.props.webpage}>{this.props.title}</Link>
-				<div className='description'>{this.props.content}</div>
+				<Link className='title-link' to={'projects/' + this.props.webpage}>{this.props.title}</Link>
+				<div className='description'><p className='description'>{this.props.content}</p></div>
 			</div>
 		);
 	}
