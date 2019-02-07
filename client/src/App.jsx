@@ -3,6 +3,7 @@ import Login from './components/login';
 import Projects from './components/projects';
 import Main from './components/main'
 import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
+import ProjectsContainer from './components/ProjectsContainer';
 class App extends Component {
 	render() {
 		return (
@@ -10,7 +11,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path="/" component={Main}/>
 					<Route path="/login" component={Login} />
-					<Route path="/projects" component={Projects}/>
+					<Route path="/projects" component={ProjectsContainer}/>
 					<Route path="/photography" component={Projects}/>
 				</Switch>
 			</Router>
