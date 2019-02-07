@@ -8,7 +8,7 @@ class Projects extends Component {
 
 	render() {
 		return (
-			<div class="pad-100">
+			<div >
 				<Filters filters={this.props.filters} addFilter={this.props.addFilter} removeFilter={this.props.removeFilter} />
 				<div className="projects" component='div'>
 					{this.props.renderedProjects.map((element) => {
