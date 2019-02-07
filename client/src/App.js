@@ -6,8 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Website under construction
-        GET ON DISCORD MAX
+        website under construction
       </div>
     );
   }
