@@ -2,6 +2,7 @@ const express = require('express');
 const fetch = require('node-fetch');
 var projectData = []
 const router = express.Router();
+require('dotenv').config()
 getProjects()
 setInterval(getProjects, 60000)
 

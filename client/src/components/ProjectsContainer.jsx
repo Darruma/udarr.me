@@ -13,7 +13,7 @@ class ProjectsContainer extends Component
 
 	render()
 	{
-		return(<Projects renderedProjects={this.renderedProjects} filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} ></Projects>)
+		return(<Projects renderedProjects={this.state.renderedProjects} filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} ></Projects>)
 
 	}
 	updateFilters = () => {

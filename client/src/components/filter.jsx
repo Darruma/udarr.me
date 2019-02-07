@@ -14,7 +14,6 @@ class Filter extends Component {
 	addFilter = (e) => {
 		e.preventDefault();
 		if (!this.state.enabled) {
-			e.preventDefault();
 			this.setState({ enabled: true});
 			this.props.addFilter(this.props.name.toLowerCase());
 		}

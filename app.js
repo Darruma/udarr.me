@@ -4,7 +4,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const session = require('express-session');
-console.log('loaded')
 require('dotenv').config()
 app.enable('trust proxy');
 app.use(function (req, res, next) {

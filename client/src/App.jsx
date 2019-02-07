@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Login from './components/login';
 import Projects from './components/projects';
 import Main from './components/main'
 import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
@@ -10,7 +9,6 @@ class App extends Component {
 			<Router >
 				<Switch>
 					<Route exact path="/" component={Main}/>
-					<Route path="/login" component={Login} />
 					<Route path="/projects" component={ProjectsContainer}/>
 					<Route path="/photography" component={Projects}/>
 				</Switch>
