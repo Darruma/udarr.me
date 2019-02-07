@@ -1,0 +1,21 @@
+.projects {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, 500px);
+  grid-auto-rows: min-content;
+  margin-top:20px;
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+   .projects{
+     display:flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+
+   }
+}
+.pad-100
+{
+  padding-top:100px;
+}
