@@ -27,6 +27,7 @@ flex-wrap: wrap;
 	min-width: 50px;
 	text-align: center;
 	font-size: 25px;
+	user-select: none;
 }
 .filter:hover { 
 	transform: scale(1.1); 
@@ -43,7 +44,8 @@ flex-wrap: wrap;
 	min-width: 50px;
 	text-align: center;
 	font-size: 25px;
-	 background-color: rgb(200, 200, 200);
+	user-select: none;
+	background-color: rgb(200, 200, 200);
 }
 
 .cross
