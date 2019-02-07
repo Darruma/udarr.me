@@ -9,7 +9,7 @@ class App extends Component {
 			<Router>
 				<Switch>
 					<Route exact path="/" component={Main}/>
-					<Route path='/projects/:name' component={Article}></Route>
+					<Route path='/projects/:name' component={ArticleContainer}></Route>
 					<Route path="/projects" component={ProjectsContainer}/>
 					<Route path="/photography" component={ProjectsContainer}/>
 				</Switch>
