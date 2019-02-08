@@ -1,0 +1,19 @@
+.inconsolata-title {
+    font-size: 30px;
+    color:#fbf1c7;
+    text-decoration: none;
+    display:inline-block;
+    padding-top:50px
+}
+.inconsolata-title:hover {
+}
+.sticky {
+    top:0;
+    position: fixed;
+    width:100%;
+}
+.header {
+    display: flex;
+    justify-content: center;
+}
+

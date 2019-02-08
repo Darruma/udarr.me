@@ -1,0 +1,39 @@
+
+.homepage
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.row-container
+{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 50px;
+    flex-wrap: wrap;
+}
+.heading {
+    font-size: 25px;
+    color:#d3869b;
+    padding-top: 10px;
+    display: inline-block;
+}
+
+.link {
+    color:#fbf1c7;
+    display: inline-block;
+   
+}
+
+
+.project-title 
+{
+    font-size: 17px;
+    padding-top: 15px;
+}
+.project {
+}
