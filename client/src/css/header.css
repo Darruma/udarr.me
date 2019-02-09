@@ -1,5 +1,5 @@
 .inconsolata-title {
-    font-size: 30px;
+    font-size: 25px;
     color:#fbf1c7;
     text-decoration: none;
     display:inline-block;
@@ -15,5 +15,7 @@
 .header {
     display: flex;
     justify-content: center;
+    background-color:#3c3836;
+    padding-bottom: 3em;
 }
 

@@ -16,6 +16,8 @@ class HomepageContainer extends Component {
         //Fetch data from backend and feed into homepage as props
         fetch('/api/projects/recent').then(res => res.json())
         .then(res => this.setState({projects:res}))
+
+        // fetch('/api/blog/recent').then(res => res.json()).then(res => this.setState({blog:res})// )
     }
 }
  

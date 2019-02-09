@@ -6,6 +6,9 @@ import Projects from './components/Projects'
 import HomepageContainer from './components/HomepageContainer';
 
 class App extends Component {
+  state ={
+    projects:[]
+  }
   render() {
     return (
       <div className="App">
@@ -14,13 +17,18 @@ class App extends Component {
           <Header></Header>
               <Switch>
                 <Route exact path='/' component={HomepageContainer}></Route>
-                <Route path='/projects' component={Projects}></Route>
+                <Route exact path='/projects' render={()=> <Projects projects={this.state.projects}></Projects>}></Route>
               </Switch>
           </div>
 
         </Router>
       </div>
     );
+  }
+  componentWillMount = () =>
+  {
+    fetch('/api/projects').then(res => res.json())
+    .then(res => this.setState({projects:res}))
   }
 }
 

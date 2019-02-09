@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import '../css/homepage.css'
 import { Link } from 'react-router-dom'
+import Project from './Project'
+import github from '../graphics/github.png'
+import rss from '../graphics/rss.png'
 class Homepage extends Component {
     render() {
         return (
             <div className='homepage'>
-            <p>github</p>
+                <div className='links'>
+                    <a href='https://github.com/Darruma'> <img className='icon' src={github}></img></a>
+                     <img src={rss}></img>
+                </div>
                 <div className='row-container'>
                     <div className='projects'>
 
                         <Link to="/projects/" className="heading  ">projects</Link>
                         {this.props.projects.map(e => {
-                            return (<div className="project" key={e.id}>
-                                <Link to={"/projects/" + e.title} className="project-title link">
-                                    {e.title}
-                                </Link>
-                                <p className="project-description">
-                                    - {e.content}
-                                </p>
-                            </div>)
+                            return (<Project title={e.title} content={e.content}></Project>)
                         })}
                     </div>
 
