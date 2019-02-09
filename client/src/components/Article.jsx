@@ -1,9 +1,11 @@
 import React from 'react';
-
+import '../css/article.css'
 class Article extends Component {
-    state = {  }
     render() { 
-        return (<div></div>  );
+        return (<div>
+            <div className='article-title'> {this.props.title}</div>
+
+        </div>  );
     }
 }
  

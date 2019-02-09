@@ -6,29 +6,33 @@ import Projects from './components/Projects'
 import HomepageContainer from './components/HomepageContainer';
 
 class App extends Component {
-  state ={
-    projects:[]
+  state = {
+    projects: []
   }
   render() {
     return (
       <div className="App">
-      <Router>
+        <Router>
           <div>
-          <Header></Header>
-              <Switch>
-                <Route exact path='/' component={HomepageContainer}></Route>
-                <Route exact path='/projects' render={()=> <Projects projects={this.state.projects}></Projects>}></Route>
-              </Switch>
+            <Header></Header>
+            <Switch>
+              <Route exact path='/' component={HomepageContainer}></Route>
+              <Route exact path='/projects' render={() => <Projects projects={this.state.projects}></Projects>}></Route>
+            </Switch>
+            <div className='footer'>
+               <p> Umair Darr 2019</p>
+            </div>
+
           </div>
 
         </Router>
+        
       </div>
     );
   }
-  componentWillMount = () =>
-  {
+  componentWillMount = () => {
     fetch('/api/projects').then(res => res.json())
-    .then(res => this.setState({projects:res}))
+      .then(res => this.setState({ projects: res }))
   }
 }
 
