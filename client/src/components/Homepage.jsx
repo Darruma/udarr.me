@@ -16,14 +16,15 @@ class Homepage extends Component {
                     <div className='projects'>
 
                         <Link to="/projects/" className="heading  ">projects</Link>
+                        { this.props.errProject && <p>There seems to be nothing here</p>}
                         {this.props.projects.map(e => {
                             return (<Project title={e.title} content={e.content}></Project>)
                         })}
                     </div>
 
                     <div className='blog'>
-                        <Link to="/blog" className="heading">blog</Link>
-                        <p>There seems to be nothing here</p>
+                        <Link to="/blog" className="heading">stuff</Link>
+                        { this.props.errBlog && <p>There seems to be nothing here</p>}
                     </div>
                 </div>
             </div>);

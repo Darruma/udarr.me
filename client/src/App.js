@@ -19,9 +19,7 @@ class App extends Component {
               <Route exact path='/' component={HomepageContainer}></Route>
               <Route exact path='/projects' render={() => <Projects projects={this.state.projects}></Projects>}></Route>
             </Switch>
-            <div className='footer'>
-               <p> Umair Darr 2019</p>
-            </div>
+            
 
           </div>
 
