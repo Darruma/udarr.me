@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/homepage.css'
 import github from '../graphics/github.png'
+import Projects from './Projects'
 class Homepage extends Component {
     render() {
         return (<div className='page'>
@@ -10,12 +11,8 @@ class Homepage extends Component {
                     <a href={'https://github.com/Darruma'}><img src={github}></img> </a>
                 </div>
             </div>
-
-            <div className='projects'>
-             
-
-            </div>
-            </div>);
+            <Projects projects={this.props.projects}></Projects>
+        </div>);
     }
 }
 

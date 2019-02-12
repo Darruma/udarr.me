@@ -1,5 +1,17 @@
-.centered-container {
-    width: 50%;
-    margin: auto;
-    padding-top:60px;
+.project {
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.projects-page {
+    height: 100%;
+    background-color: #3c3836;
+}
+
+.projects-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
 }
