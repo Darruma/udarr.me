@@ -26,9 +26,7 @@ min-width: 50%;
 }
 .projects-image {
     width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
 }
 .project-name {
     font-size: 20px;
