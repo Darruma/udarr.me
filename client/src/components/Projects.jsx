@@ -8,7 +8,9 @@ class Projects extends Component {
             <div className='projects-container '>
                 {this.props.projects.map(e => {
                     return (<div key={e.id} className='project'>
+                    <div>
                     <img className='projects-image' src={'/images/' + e.title + '.jpg'}></img>
+                    </div>
                     <div className='projects-main'>
                             <p className='project-title'>{e.title}</p>
                         <div className='projects-description'> 
