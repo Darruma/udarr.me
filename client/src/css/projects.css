@@ -2,16 +2,40 @@
     border: 1px solid;
     display: flex;
     flex-direction: row;
+    height: 30%;
+    width: 75%;
+    margin-bottom: 2%;
 }
-
 .projects-page {
     height: 100%;
     background-color: #3c3836;
 }
-
 .projects-container {
  display: flex;
  justify-content: center;
  align-items: center;
  flex-direction: column;
+ height: 100%;
+}
+
+.projects-main {
+min-width: 50%;
+}
+.project-title {
+    text-align: center;
+}
+.projects-image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.project-name {
+    font-size: 20px;
+    text-align: center;
+}
+
+.projects-description {
+    padding-top: 5%;
+    text-align: center;
 }

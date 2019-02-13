@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import { Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomepageContainer from './components/HomepageContainer';
-
+import Projects from './components/Projects'
 class App extends Component {
   state = {
     projects: []
   }
   render() {
     return (
-      <div className="App">
-        <Router>
-            <Switch>
-              <Route path='/'  component={HomepageContainer}></Route>
-              <Route path='/projects'  render={()=> <Projects projects={this.state.projects}></Projects> }></Route>
+      <Router>
+        <div className="App">
+          <Route path='/' component={HomepageContainer}></Route>
+          <Route path='/projects' render={() => <Projects projects={this.state.projects}></Projects>}></Route>
+        </div>
 
-            </Switch>
-        </Router>
-      </div>
+      </Router>
     );
   }
-  componentWillMount = () =>
-  {
-    fetch('/api/projects').then(res => res.json()).then(res=>this.setState({projects:res}));
+  componentWillMount = () => {
+    fetch('/api/projects').then(res => res.json()).then(res => this.setState({ projects: res }));
   }
 
 }

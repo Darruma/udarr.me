@@ -11,7 +11,7 @@ router.get('/projects', (req, res) => {
 });
 router.get('/projects/recent',(req,res) =>
 {
-	res.send(projectData.slice(0,5))
+	res.send(projectData.slice(0,3))
 })
 function getProjects() {
 	fetchRepos().then(res => {
