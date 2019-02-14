@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import '../css/projects.css'
+import Bounce from 'react-reveal/Bounce';
 class Projects extends Component {
 
     render() {
-        return (<div className='projects-page'>
-            <p className="project-name">projects</p>
-            <div className='projects-container '>
-                {this.props.projects.map(e => {
-                    return (<div key={e.id} className='project'>
-                    <div>
-                    <img className='projects-image' src={'/images/' + e.title + '.jpg'}></img>
+        return (<div className='projects-all'>
+            <p className='project-title'>Projects</p>
+            {this.props.projects.reduce((result, project, index) => {
+                const t_index = Math.floor(index / 3);
+                if (!result[t_index]) {
+                    result[t_index] = []
+                }
+                result[t_index].push(project)
+                return result
+            }, []).map(chunk => {
+                return (<div className='projects-page'>
+                <Bounce top>
+                    <div className='projects-container '>
+                        {chunk.map(proj => {
+                            return (
+                                <div className='project'>
+                                    <p>{proj.title}</p>
+                                </div>
+                            )
+                        })}
                     </div>
-                    <div className='projects-main'>
-                            <p className='project-title'>{e.title}</p>
-                        <div className='projects-description'> 
-                        <p className='projects-description'> {e.content}</p>
-                            </div>
-                    </div>
-                    </div>)
-                })}
-            </div>
+                    </Bounce>
+                </div>)
+
+            })}
         </div>);
     }
 }

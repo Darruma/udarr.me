@@ -1,5 +1,5 @@
 .project {
-    border: 1px solid;
+    border: 2px solid;
     display: flex;
     flex-direction: row;
     height: 30%;
@@ -7,8 +7,13 @@
     margin-bottom: 2%;
 }
 .projects-page {
-    height: 100%;
+    height: 95vh;
     background-color: #3c3836;
+}
+.projects-all 
+{
+    height: 100%;
+    background-color:  #3c3836;
 }
 .projects-container {
  display: flex;
@@ -18,25 +23,8 @@
  height: 100%;
 }
 
-.projects-main {
-min-width: 50%;
-}
-.project-title {
-    text-align: center;
-}
-.projects-image {
-    height: 100%;
-    max-width: 100%;
-}
-.projects-image-container {
-    width: 50%;
-}
-.project-name {
-    font-size: 20px;
-    text-align: center;
-}
 
-.projects-description {
-    padding-top: 5%;
-    text-align: center;
+.project-title {
+ font-size: 24px;
+ text-align: center;
 }

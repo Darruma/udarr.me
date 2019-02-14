@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router,Switch, Route } from 'react-router-dom'
 import HomepageContainer from './components/HomepageContainer';
 import Projects from './components/Projects'
 class App extends Component {
@@ -11,8 +11,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route path='/' component={HomepageContainer}></Route>
+        <Switch>
+          <Route exact path='/' component={HomepageContainer}></Route>
           <Route path='/projects' render={() => <Projects projects={this.state.projects}></Projects>}></Route>
+          </Switch>
         </div>
 
       </Router>
