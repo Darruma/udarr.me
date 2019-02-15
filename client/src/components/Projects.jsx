@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import '../css/projects.css'
 import Bounce from 'react-reveal/Bounce';
+import { Link } from 'react-router-dom'
 class Projects extends Component {
 
     render() {
         return (<div className='projects-all'>
-            <p className='project-title'>Projects</p>
+            <Link to='/projects' className='projects-page-link'>  <p>Projects</p>  </Link>
             {this.props.projects.reduce((result, project, index) => {
                 const t_index = Math.floor(index / 3);
                 if (!result[t_index]) {
@@ -20,7 +21,7 @@ class Projects extends Component {
                         {chunk.map(proj => {
                             return (
                                 <div className='project'>
-                                    <p>{proj.title}</p>
+                                    <p className='project-title'>{proj.title}</p>
                                 </div>
                             )
                         })}
