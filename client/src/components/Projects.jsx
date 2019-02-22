@@ -7,29 +7,13 @@ class Projects extends Component {
     render() {
         return (<div className='projects-all'>
             <Link to='/projects' className='projects-page-link'>  <p>Projects</p>  </Link>
-            {this.props.projects.reduce((result, project, index) => {
-                const t_index = Math.floor(index / 3);
-                if (!result[t_index]) {
-                    result[t_index] = []
-                }
-                result[t_index].push(project)
-                return result
-            }, []).map(chunk => {
-                return (<div className='projects-page'>
-                <Bounce top>
-                    <div className='projects-container '>
-                        {chunk.map(proj => {
-                            return (
-                                <div className='project'>
-                                    <p className='project-title'>{proj.title}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-                    </Bounce>
-                </div>)
-
-            })}
+                <div className='project-container'>
+                {this.props.projects.map(element => {
+                    return(<div className='project'>
+                        <a className='projects-link' href={element.link}>{element.title}</a>
+                        </div>)
+                })}
+                </div>
         </div>);
     }
 }

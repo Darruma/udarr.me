@@ -16,7 +16,7 @@ class HomepageContainer extends Component {
     componentWillMount = () =>
     {
         //Fetch data from backend and feed into homepage as props
-        fetch('/api/projects/recent').then(res => res.json())
+        fetch('/api/projects/').then(res => res.json())
         .then(res => this.setState({projects:res})).catch(e => this.setState({errorProjects:true}))
 
          fetch('/api/blog/recent').then(res => res.json()).then(res => this.setState({blog:res})).catch(e => this.setState({errorBlog:true}))

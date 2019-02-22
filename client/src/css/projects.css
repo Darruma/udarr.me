@@ -1,15 +1,4 @@
-.project {
-    border: 2px solid;
-    display: flex;
-    flex-direction: row;
-    height: 30%;
-    width: 75%;
-    margin-bottom: 2%;
-}
-.projects-page {
-    height: 95vh;
-    background-color: #3c3836;
-}
+
 .projects-page-link {
     text-decoration: none;
     color: orange;
@@ -21,20 +10,18 @@
     height: 100%;
     background-color:  #3c3836;
     padding-top: 10px;
-}
-.projects-container {
-    display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
+}
+.project-container {
+    display: flex;
     flex-direction: column;
-    height: 100%;
+    align-items: center;
 }
-.project-title {
-    font-size: 24px;
-    text-align: center;
-    width: 100%;
+.projects-link {
+    color: inherit;
+    font-size: 18x;
 }
-
-.project-image {
-
+.project {
+    margin-top: 20px;
 }
