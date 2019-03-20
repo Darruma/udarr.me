@@ -1,5 +1,6 @@
 const express = require('express');
 const projects = require('./routes/projects');
+const gym= require('./routes/gym');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
@@ -26,6 +27,7 @@ app.use(
 	})
 );
 app.use('/api', projects);
+app.use('/api',gym);
 app.use('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
