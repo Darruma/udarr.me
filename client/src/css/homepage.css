@@ -1,22 +1,5 @@
-.name {
-    font-size: 50px;
-}
-.name:hover {
-    color: #fb4934
-}
-.main {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.page {
-    height: 100%;
-}
-.icons {
-    display: flex;
-    flex-direction: row;
-    display: block;
-    padding-bottom: 10px;
+.sticky-container {
+    position: sticky;
+    width: 40%;
+    background-color:#859bbf;
 }
