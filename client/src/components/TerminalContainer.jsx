@@ -4,7 +4,7 @@ class TerminalContainer extends Component {
     state = {  }
     render() { 
         return (<div>
-            terminal container
+           <Terminal terminal_data={'root@darruma > '}></Terminal>
         </div>  );
     }
 }
