@@ -4,10 +4,13 @@
     margin: 20px;
 }
 .terminal-theme {
-    padding-left: 10px;
     padding-right: 10px;
     color: #fbf1c7;
     font-family: 'Inconsolata', monospace;
+    font-size: 20px;
+}
+.terminal-prompt {
+    height: 1em;
 }
 .terminal-button {
     width: 10px;
@@ -41,9 +44,11 @@
     align-items: center;
 }
 .terminal-data {
-    height: 20vh;
     background-color: #282726;
-   
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 5px 5px;
+    height: 400px;
 }
 
 .terminal-input {
@@ -53,5 +58,11 @@
     color: #fbf1c7;
     font-family: 'Inconsolata', monospace;
     z-index: 2;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 0px;
+    height: 1em;
+}
+.terminal-current-line {
+    background-color: #282726;
+    display: flex;
+    flex-direction: row;
 }

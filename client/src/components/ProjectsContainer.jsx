@@ -3,12 +3,21 @@ import '../css/projects.css'
 import { Link } from '@reach/router';
 
 class ProjectsContainer extends Component {
-    state = {  }
-    render() { 
+    state = { projects: [] }
+    render() {
         return (<div>
             projects
-        </div>  );
+        </div>);
+    }
+    componentWillMount() {
+        fetch('/api/projects')
+            .then(res => res.json())
+            .then(projects => {
+                this.setState({
+                    projects: projects
+                })
+            })
     }
 }
- 
+
 export default ProjectsContainer;
