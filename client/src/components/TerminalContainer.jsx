@@ -6,7 +6,7 @@ class TerminalContainer extends Component {
     state = {
         filesystem: {},
         terminal_data: [''],
-        current_dir_name: '',
+        current_dir_name: '/',
         current_dir: {},
         full_path: ""
     }
@@ -43,9 +43,7 @@ class TerminalContainer extends Component {
                     }
                     else if (input_array[1] == "..") {
                         let path_behind = this.state.full_path.substring(0, this.state.full_path.lastIndexOf("/"));
-                        if (path_behind == "") {
-                            path_behind = "/"
-                        }
+                       
                         result = resolvePath(path_behind, this.state.filesystem);
                         if (result.success && result.type == "directory") {
                             this.setState((state) => {
@@ -65,8 +63,8 @@ class TerminalContainer extends Component {
                             this.setState((state) => {
                                 state.current_dir = result.data
                                 state.current_dir_name = result.data.name
-                                state.full_path = this.state.full_path + "/" + result.data.name
-                            });
+                                state.full_path = this.state.full_path + "/" + input_array[1]   
+                            },()=>console.log(this.state.full_path));
                             break;
                         }
                         else {

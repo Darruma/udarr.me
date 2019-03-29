@@ -1,7 +1,7 @@
 export default (path, root) => {
     const path_array = path.split("/").filter(item => item != "");
-    let temp = root;
     console.log(path_array);
+    let temp = root;
     for (let i = 0; i < path_array.length; i++) {
         let path_name = path_array[i];
        
