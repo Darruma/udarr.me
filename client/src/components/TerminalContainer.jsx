@@ -6,45 +6,68 @@ class TerminalContainer extends Component {
     state = {
         filesystem: {},
         terminal_data: [''],
-        current_dir_name: '/',
+        current_dir_name: '',
         current_dir: {},
-        dir_tree:[]
+        full_path: ""
     }
     render() {
         return (<div>
             <Terminal onTerminalKey={this.handleTerminalKey} current_folder={this.state.current_dir_name} terminal_data={this.state.terminal_data}></Terminal>
         </div>);
     }
-    output_to_terminal = (data, color) => {
+    output_to_terminal = (data, color, layout) => {
         this.setState((state) => {
             state.terminal_data = state.terminal_data.concat({
                 data: data,
-                color: color
+                color: color,
+                layout: layout
             })
             return state
         })
     }
     execute = (input) => {
-        this.output_to_terminal("[client@darruma " + this.state.current_dir_name + "] $ " + input, "#fbf1c7");
+        this.output_to_terminal("[client@darruma " + this.state.current_dir_name + "]$ " + input, "#fbf1c7");
         let input_array = input.split(" ");
         switch (input_array[0]) {
             case "cd":
-
                 if (input_array.length == 2) {
-                    const result = resolvePath(input_array[1], this.state.current_dir);
+                    let result;
+
                     if (input_array[1] == "/") {
                         this.setState({
                             current_dir: this.state.filesystem,
-                            current_dir_name: "/"
+                            current_dir_name: "/",
+                            full_path: "/"
                         })
                         break;
                     }
+                    else if (input_array[1] == "..") {
+                        let path_behind = this.state.full_path.substring(0, this.state.full_path.lastIndexOf("/"));
+                        if (path_behind == "") {
+                            path_behind = "/"
+                        }
+                        result = resolvePath(path_behind, this.state.filesystem);
+                        if (result.success && result.type == "directory") {
+                            this.setState((state) => {
+                                state.current_dir = result.data
+                                state.current_dir_name = result.data.name
+                                state.full_path = path_behind
+                            });
+                            break;
+                        }
+
+                    } else {
+                        result = resolvePath(input_array[1], this.state.current_dir);
+                    }
+
                     if (result.success) {
                         if (result.type == "directory") {
-                            this.setState({
-                                current_dir: result.data,
-                                current_dir_name: result.data.name,
-                            })
+                            this.setState((state) => {
+                                state.current_dir = result.data
+                                state.current_dir_name = result.data.name
+                                state.full_path = this.state.full_path + "/" + result.data.name
+                            });
+                            break;
                         }
                         else {
                             if (result.type == "file") {
@@ -65,9 +88,17 @@ class TerminalContainer extends Component {
             case "ls":
                 if (input_array.length == 1) {
                     let children = this.state.current_dir.children;
+                    console.log(children)
+                    children.forEach(val => {
+                        if (val.type == "directory") {
+                            this.output_to_terminal(val.name + "/");
+                        }
+                        else {
+                            this.output_to_terminal(val.name);
+                        }
+                    })
                 }
         }
-
     }
     handleTerminalKey = (e) => {
         if (e.keyCode === 13) {
@@ -82,7 +113,7 @@ class TerminalContainer extends Component {
     ls = () => {
 
     }
-    componentDidMount() {
+    componentWillMount() {
         // getFileSystem().then(filesystem => {
         //     this.setState({ filesystem: filesystem })
         // })
@@ -99,7 +130,6 @@ class TerminalContainer extends Component {
                         name: 'pymaths.info',
                         type: 'file',
                         data: 'pymaths is cool'
-
                     }]
                 }, {
                     name: 'dotfiles',

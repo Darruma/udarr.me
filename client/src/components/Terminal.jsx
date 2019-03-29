@@ -10,11 +10,11 @@ const Terminal = props => {
             </div>
             <div className='terminal-data terminal-theme'>
                 {props.terminal_data.map(line => {
-                   return( <div style={{color:line.color}} key={line}>{line.data}</div>)
+                   return( <div style={{color:line.color,display:line.layout}} >{line.data}</div>)
                 }
                 )}
                 <div className='terminal-current-line'>
-                    <div className='terminal-theme terminal-prompt'>{"[client@darruma " + props.current_folder + "] $"}</div>
+                    <div className='terminal-theme terminal-prompt'>{"[client@darruma " + props.current_folder + "]$"}</div>
                     <input onKeyDown={props.onTerminalKey} autoFocus={true} className='terminal-input terminal-theme'></input>
                 </div>
             </div>
