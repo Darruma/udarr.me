@@ -23,7 +23,9 @@ router.get('/projects', (req, res) => {
 		}) 
 		res.send({
 			success:true,
-			data:projects.sort()
+			data:projects.sort((a, b) => {
+				return new Date(b.pushed_at) - new Date(a.pushed_at)
+			})
 		})
 	})
 });
