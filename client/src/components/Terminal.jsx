@@ -8,14 +8,14 @@ const Terminal = props => {
                 <div className='terminal-button amber' ></div>
                 <div className='terminal-button green' ></div>
             </div>
-            <div className='terminal-data terminal-theme'>
+            <div className='terminal-data terminal-color terminal-theme'>
                 {props.terminal_data.map(line => {
                    return( <div style={{color:line.color,display:line.layout}} >{line.data}</div>)
                 }
                 )}
-                <div className='terminal-current-line'>
-                    <div className='terminal-theme terminal-prompt'>{"[client@darruma " + props.current_folder + "]$"}</div>
-                    <input onKeyDown={props.onTerminalKey} autoFocus={true} className='terminal-input terminal-theme'></input>
+                <div className='terminal-current-line terminal-color'>
+                    <div className='terminal-theme terminal-prompt terminal-color'>{"[client@darruma " + props.current_folder + "]$"}</div>
+                    <input onKeyDown={props.onTerminalKey} autoFocus={true} className='terminal-input terminal-color terminal-theme'></input>
                 </div>
             </div>
 

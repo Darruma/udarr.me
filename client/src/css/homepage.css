@@ -5,8 +5,9 @@
 }
 .centered-title {
     text-align: center;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     font-size: 40px;
-    font-family: 'Karla', sans-serif;
+    font-family: 'Inconsolata', sans-serif;
+    color: white;
 }

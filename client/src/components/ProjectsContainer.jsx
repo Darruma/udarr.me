@@ -3,20 +3,22 @@ import '../css/projects.css'
 import { Link } from '@reach/router';
 
 class ProjectsContainer extends Component {
-    state = { projects: [] }
+    state = { projects: [],status:''}
     render() {
-        return (<div>
-            projects
+        return (<div className='projects-container'>
+           projects
         </div>);
     }
     componentWillMount() {
-        // fetch('/api/projects')
-        //     .then(res => res.json())
-        //     .then(projects => {
-        //         this.setState({
-        //             projects: projects
-        //         })
-        //     })
+        fetch('/api/projects')
+            .then(res => res.json())
+            .then(projects => {
+                this.setState({
+                    projects: projects
+                })
+            }).catch(err => {
+                console.log(err)
+            })
     }
 }
 
