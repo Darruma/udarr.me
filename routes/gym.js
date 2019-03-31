@@ -1,6 +1,5 @@
 const express = require('express'); 
 const exec = require('child_process').exec;
-var sys = require('sys');
 const router = express.Router(); 
 require('dotenv').config()
 router.get('/gymamount',(req,res) =>
@@ -24,5 +23,4 @@ router.get('/gymamount',(req,res) =>
         )
     });
 })
-
 module.exports = router;
