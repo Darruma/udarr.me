@@ -10,13 +10,13 @@ class ProjectsContainer extends Component {
         </div>);
     }
     componentWillMount() {
-        fetch('/api/projects')
-            .then(res => res.json())
-            .then(projects => {
-                this.setState({
-                    projects: projects
-                })
-            })
+        // fetch('/api/projects')
+        //     .then(res => res.json())
+        //     .then(projects => {
+        //         this.setState({
+        //             projects: projects
+        //         })
+        //     })
     }
 }
 

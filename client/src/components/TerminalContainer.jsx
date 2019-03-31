@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Terminal from './Terminal';
 import getFileSystem from '../actions/filesystem'
 import resolvePath from '../actions/resolvepath';
+import { navigate } from '@reach/router'
 class TerminalContainer extends Component {
     state = {
         filesystem: {},
@@ -32,39 +33,55 @@ class TerminalContainer extends Component {
             case "cd":
                 if (input_array.length == 2) {
                     let result;
-
                     if (input_array[1] == "/") {
                         this.setState({
                             current_dir: this.state.filesystem,
                             current_dir_name: "/",
-                            full_path: "/"
+                            full_path: ""
+                        }, () => {
+                            navigate("/");
                         })
                         break;
                     }
                     else if (input_array[1] == "..") {
                         let path_behind = this.state.full_path.substring(0, this.state.full_path.lastIndexOf("/"));
-                       
                         result = resolvePath(path_behind, this.state.filesystem);
+                        console.log(result)
                         if (result.success && result.type == "directory") {
                             this.setState((state) => {
                                 state.current_dir = result.data
                                 state.current_dir_name = result.data.name
                                 state.full_path = path_behind
+                            }, () => {
+                                if (this.state.full_path == "") {
+                                    navigate("/");
+                                }
+                                else {
+                                    navigate(this.state.full_path)
+                                }
                             });
+
                             break;
                         }
-
                     } else {
                         result = resolvePath(input_array[1], this.state.current_dir);
                     }
-
                     if (result.success) {
                         if (result.type == "directory") {
                             this.setState((state) => {
                                 state.current_dir = result.data
                                 state.current_dir_name = result.data.name
-                                state.full_path = this.state.full_path + "/" + input_array[1]   
-                            },()=>console.log(this.state.full_path));
+                                if (state.full_path == "/") {
+                                    console.log("path = /");
+                                    state.full_path = "/" + input_array[1]
+                                } else {
+                                    console.log("path == not /");
+                                    state.full_path = this.state.full_path + "/" + input_array[1]
+                                }
+                            }, () => {
+                                console.log(this.state.full_path);
+                                navigate(this.state.full_path)
+                            });
                             break;
                         }
                         else {
@@ -82,7 +99,6 @@ class TerminalContainer extends Component {
             case "clear":
                 this.setState({ terminal_data: [] })
                 break;
-
             case "ls":
                 if (input_array.length == 1) {
                     let children = this.state.current_dir.children;

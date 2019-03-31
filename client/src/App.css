@@ -6,3 +6,9 @@
   flex-direction: row;
   height: 100vh;
 }
+.left-side{ 
+  position: sticky;
+  background-color:#859bbf;
+  height: 100%;
+  width: 40%;
+}

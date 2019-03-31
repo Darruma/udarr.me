@@ -1,5 +1,12 @@
-.sticky-container {
-    position: sticky;
-    width: 40%;
-    background-color:#859bbf;
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.centered-title {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 40px;
+    font-family: 'Karla', sans-serif;
 }
