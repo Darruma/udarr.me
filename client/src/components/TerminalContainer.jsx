@@ -3,6 +3,7 @@ import Terminal from './Terminal';
 import getFileSystem from '../actions/filesystem'
 import resolvePath from '../actions/resolvepath';
 import { navigate } from '@reach/router'
+import { resolve } from 'path';
 class TerminalContainer extends Component {
     state = {
         filesystem: {},
@@ -26,6 +27,7 @@ class TerminalContainer extends Component {
             return state
         })
     }
+
     execute = (input) => {
         this.output_to_terminal("[client@darruma " + this.state.current_dir_name + "]$ " + input, "#fbf1c7");
         let input_array = input.split(" ");
@@ -46,7 +48,6 @@ class TerminalContainer extends Component {
                     else if (input_array[1] == "..") {
                         let path_behind = this.state.full_path.substring(0, this.state.full_path.lastIndexOf("/"));
                         result = resolvePath(path_behind, this.state.filesystem);
-                        console.log(result)
                         if (result.success && result.type == "directory") {
                             this.setState((state) => {
                                 state.current_dir = result.data
@@ -60,35 +61,28 @@ class TerminalContainer extends Component {
                                     navigate(this.state.full_path)
                                 }
                             });
-
                             break;
                         }
-                    } else {
-                        result = resolvePath(input_array[1], this.state.current_dir);
-                    }
+                    } 
+                    result = resolvePath(input_array[1], this.state.current_dir);
                     if (result.success) {
                         if (result.type == "directory") {
                             this.setState((state) => {
                                 state.current_dir = result.data
                                 state.current_dir_name = result.data.name
                                 if (state.full_path == "/") {
-                                    console.log("path = /");
                                     state.full_path = "/" + input_array[1]
                                 } else {
-                                    console.log("path == not /");
                                     state.full_path = this.state.full_path + "/" + input_array[1]
                                 }
                             }, () => {
-                                console.log(this.state.full_path);
                                 navigate(this.state.full_path)
                             });
                             break;
                         }
-                        else {
-                            if (result.type == "file") {
+                        else if (result.type == "file") {
                                 this.output_to_terminal("Error, " + result.data.name + " is a file", "#fbf1c7");
                             }
-                        }
                     } else if (!result.success) {
                         this.output_to_terminal(result.data, "#fbf1c7");
                     }
@@ -100,18 +94,11 @@ class TerminalContainer extends Component {
                 this.setState({ terminal_data: [] })
                 break;
             case "ls":
-                if (input_array.length == 1) {
-                    let children = this.state.current_dir.children;
-                    console.log(children)
-                    children.forEach(val => {
-                        if (val.type == "directory") {
-                            this.output_to_terminal(val.name + "/");
-                        }
-                        else {
-                            this.output_to_terminal(val.name);
-                        }
-                    })
-                }
+                this.ls(input_array);
+                break;
+            case "cat":
+                this.cat(input);
+                break;
         }
     }
     handleTerminalKey = (e) => {
@@ -121,16 +108,35 @@ class TerminalContainer extends Component {
         }
     }
 
-    cat = (file) => {
-
+    cat = (input) => {
+       let input_array = input.split(" ");
+       let result = resolvePath(input_array[1], this.state);
+       if(result.success) {
+           if(result.type == "file") {
+                this.output_to_terminal(result.data);
+           }
+           else {
+            this.output_to_terminal("Error ," + input + " is not a file");
+        }
+       } 
+       else {
+        this.output_to_terminal("Error, could not find " + input);
+       }
     }
-    ls = () => {
-
+    ls = (input_array) => {
+        if (input_array.length == 1) {
+            let children = this.state.current_dir.children;
+            children.forEach(val => {
+                if (val.type == "directory") {
+                    this.output_to_terminal(val.name + "/");
+                }
+                else {
+                    this.output_to_terminal(val.name);
+                }
+            })
+        }
     }
     componentWillMount() {
-        // getFileSystem().then(filesystem => {
-        //     this.setState({ filesystem: filesystem })
-        // })
         const files = {
             name: '/',
             type: 'directory',
@@ -162,11 +168,16 @@ class TerminalContainer extends Component {
             }
             ]
         }
-        this.setState({
-            filesystem: files,
-            current_dir: files
-        })
-
+        getFileSystem().then(filesystem => {
+            this.setState({ filesystem: filesystem })
+        }).catch(err=> 
+            this.setState({
+                filesystem: files,
+                current_dir: files
+            })
+            )
+        
+       
     }
 
 }

@@ -17,7 +17,8 @@ class ProjectsContainer extends Component {
                     projects: projects
                 })
             }).catch(err => {
-                console.log(err)
+                console.log(err);
+                this.setState({status:'Error, data unavailable'});
             })
     }
 }
