@@ -27,6 +27,36 @@ class TerminalContainer extends Component {
             return state
         })
     }
+    navigate_to_path = () => {
+        if (this.state.full_path == "") {
+            navigate("/");
+        }
+        else {
+            navigate(this.state.full_path)
+        }
+    }
+    cd_dir = (path, root) => {
+        let fs = (root) ? this.state.filesystem : this.state.current_dir;
+        let result = resolvePath(path, fs);
+        if (result.success && result.type == "directory") {
+            this.setState((state) => {
+                state.current_dir = result.data;
+                state.current_dir_name = result.data.name;
+                if (root) {
+                    state.full_path = path;
+                } else if (state.full_path == "/") {
+                    state.full_path = "/" + path
+                } else {
+                    state.full_path = this.state.full_path + "/" + path
+                }
+            },this.navigate_to_path)
+        }
+        else if (result.type == "file") {
+            this.output_to_terminal("Error, " + result.data.name + " is a file", "#fbf1c7");
+        } else if (!result.success) {
+            this.output_to_terminal( result.data );
+        }
+    }
 
     execute = (input) => {
         this.output_to_terminal("[client@darruma " + this.state.current_dir_name + "]$ " + input, "#fbf1c7");
@@ -34,57 +64,19 @@ class TerminalContainer extends Component {
         switch (input_array[0]) {
             case "cd":
                 if (input_array.length == 2) {
-                    let result;
                     if (input_array[1] == "/") {
                         this.setState({
                             current_dir: this.state.filesystem,
                             current_dir_name: "/",
                             full_path: ""
-                        }, () => {
-                            navigate("/");
-                        })
-                        break;
+                        },this.navigate_to_path)
                     }
                     else if (input_array[1] == "..") {
                         let path_behind = this.state.full_path.substring(0, this.state.full_path.lastIndexOf("/"));
-                        result = resolvePath(path_behind, this.state.filesystem);
-                        if (result.success && result.type == "directory") {
-                            this.setState((state) => {
-                                state.current_dir = result.data
-                                state.current_dir_name = result.data.name
-                                state.full_path = path_behind
-                            }, () => {
-                                if (this.state.full_path == "") {
-                                    navigate("/");
-                                }
-                                else {
-                                    navigate(this.state.full_path)
-                                }
-                            });
-                            break;
-                        }
-                    } 
-                    result = resolvePath(input_array[1], this.state.current_dir);
-                    if (result.success) {
-                        if (result.type == "directory") {
-                            this.setState((state) => {
-                                state.current_dir = result.data
-                                state.current_dir_name = result.data.name
-                                if (state.full_path == "/") {
-                                    state.full_path = "/" + input_array[1]
-                                } else {
-                                    state.full_path = this.state.full_path + "/" + input_array[1]
-                                }
-                            }, () => {
-                                navigate(this.state.full_path)
-                            });
-                            break;
-                        }
-                        else if (result.type == "file") {
-                                this.output_to_terminal("Error, " + result.data.name + " is a file", "#fbf1c7");
-                            }
-                    } else if (!result.success) {
-                        this.output_to_terminal(result.data, "#fbf1c7");
+                        this.cd_dir(path_behind,true);
+                    }
+                    else {
+                        this.cd_dir(input_array[1],false);
                     }
                 } else {
                     this.output_to_terminal("cd : Wrong amount of arguments")
@@ -109,19 +101,19 @@ class TerminalContainer extends Component {
     }
 
     cat = (input) => {
-       let input_array = input.split(" ");
-       let result = resolvePath(input_array[1], this.state);
-       if(result.success) {
-           if(result.type == "file") {
+        let input_array = input.split(" ");
+        let result = resolvePath(input_array[1], this.state);
+        if (result.success) {
+            if (result.type == "file") {
                 this.output_to_terminal(result.data);
-           }
-           else {
-            this.output_to_terminal("Error ," + input + " is not a file");
+            }
+            else {
+                this.output_to_terminal("Error ," + input + " is not a file");
+            }
         }
-       } 
-       else {
-        this.output_to_terminal("Error, could not find " + input);
-       }
+        else {
+            this.output_to_terminal("Error, could not find " + input);
+        }
     }
     ls = (input_array) => {
         if (input_array.length == 1) {
@@ -170,14 +162,14 @@ class TerminalContainer extends Component {
         }
         getFileSystem().then(filesystem => {
             this.setState({ filesystem: filesystem })
-        }).catch(err=> 
+        }).catch(err =>
             this.setState({
                 filesystem: files,
                 current_dir: files
             })
-            )
-        
-       
+        )
+
+
     }
 
 }
