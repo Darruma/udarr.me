@@ -3,14 +3,15 @@ import Terminal from './Terminal';
 import getFileSystem from '../actions/filesystem'
 import resolvePath from '../actions/resolvepath';
 import { navigate } from '@reach/router'
-import { resolve } from 'path';
 class TerminalContainer extends Component {
     state = {
         filesystem: {},
         terminal_data: [''],
         current_dir_name: '/',
         current_dir: {},
-        full_path: ""
+        full_path: "",
+        commandHistory: [],
+        command_pointer: 1
     }
     render() {
         return (<div>
@@ -49,12 +50,12 @@ class TerminalContainer extends Component {
                 } else {
                     state.full_path = this.state.full_path + "/" + path
                 }
-            },this.navigate_to_path)
+            }, this.navigate_to_path)
         }
         else if (result.type == "file") {
             this.output_to_terminal("Error, " + result.data.name + " is a file", "#fbf1c7");
         } else if (!result.success) {
-            this.output_to_terminal( result.data );
+            this.output_to_terminal(result.data);
         }
     }
 
@@ -69,14 +70,14 @@ class TerminalContainer extends Component {
                             current_dir: this.state.filesystem,
                             current_dir_name: "/",
                             full_path: ""
-                        },this.navigate_to_path)
+                        }, this.navigate_to_path)
                     }
                     else if (input_array[1] == "..") {
                         let path_behind = this.state.full_path.substring(0, this.state.full_path.lastIndexOf("/"));
-                        this.cd_dir(path_behind,true);
+                        this.cd_dir(path_behind, true);
                     }
                     else {
-                        this.cd_dir(input_array[1],false);
+                        this.cd_dir(input_array[1], false);
                     }
                 } else {
                     this.output_to_terminal("cd : Wrong amount of arguments")
@@ -94,25 +95,35 @@ class TerminalContainer extends Component {
         }
     }
     handleTerminalKey = (e) => {
+        e.persist();
         if (e.keyCode === 13) {
             this.execute(e.target.value)
+            this.setState({
+                commandHistory: this.state.commandHistory.concat(e.target.value)
+            });
             e.target.value = ""
+           
+
+        }
+        if (e.keyCode === 38) {
+            // implement shell history
         }
     }
 
     cat = (input) => {
         let input_array = input.split(" ");
-        let result = resolvePath(input_array[1], this.state);
+        let result = resolvePath(input_array[1], this.state.current_dir);
+        console.log(result)
         if (result.success) {
             if (result.type == "file") {
-                this.output_to_terminal(result.data);
+                this.output_to_terminal(result.data.data);
             }
             else {
-                this.output_to_terminal("Error ," + input + " is not a file");
+                this.output_to_terminal("Error ," + input_array[1] + " is not a file");
             }
         }
         else {
-            this.output_to_terminal("Error, could not find " + input);
+            this.output_to_terminal("Error, could not find " + input_array[1]);
         }
     }
     ls = (input_array) => {
@@ -168,8 +179,6 @@ class TerminalContainer extends Component {
                 current_dir: files
             })
         )
-
-
     }
 
 }

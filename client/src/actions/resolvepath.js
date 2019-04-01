@@ -15,7 +15,7 @@ export default (path, root) => {
                 }
             }
             if (child.type == "file") {
-                if (i == path_array.length) {
+                if (i == path_array.length - 1) {
                     return {
                         success: true,
                         type: 'file',
@@ -38,7 +38,7 @@ export default (path, root) => {
             type: 'directory',
         }
     }
-    else {
+    else if (temp.type == "file") {
         return {
             success: true,
             data: temp,
