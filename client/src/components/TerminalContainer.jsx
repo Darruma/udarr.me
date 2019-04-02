@@ -107,7 +107,7 @@ class TerminalContainer extends Component {
 
         }
         if (e.keyCode === 38) {
-            const command = this.state.commandHistory[this.state.command_pointer  1];
+            const command = this.state.commandHistory[this.state.command_pointer - 1];
             if (command) {
                 e.target.value = command
                 this.setState({
@@ -118,88 +118,78 @@ class TerminalContainer extends Component {
         }
         // implement shell history
     }
-    if(e.keyCode === 40) {
-    const command = this.state.commandHistory[this.state.command_pointer + 1];
-    if (command) {
-        e.target.value = command
-        this.setState({
-            command_pointer: this.state.command_pointer + 1
-        })
-    }
 
-}
-    }
 
-cat = (input) => {
-    let input_array = input.split(" ");
-    let result = resolvePath(input_array[1], this.state.current_dir);
-    console.log(result)
-    if (result.success) {
-        if (result.type == "file") {
-            this.output_to_terminal(result.data.data);
-        }
-        else {
-            this.output_to_terminal("Error ," + input_array[1] + " is not a file");
-        }
-    }
-    else {
-        this.output_to_terminal("Error, could not find " + input_array[1]);
-    }
-}
-ls = (input_array) => {
-    if (input_array.length == 1) {
-        let children = this.state.current_dir.children;
-        children.forEach(val => {
-            if (val.type == "directory") {
-                this.output_to_terminal(val.name + "/");
+    cat = (input) => {
+        let input_array = input.split(" ");
+        let result = resolvePath(input_array[1], this.state.current_dir);
+        console.log(result)
+        if (result.success) {
+            if (result.type == "file") {
+                this.output_to_terminal(result.data.data);
             }
             else {
-                this.output_to_terminal(val.name);
+                this.output_to_terminal("Error ," + input_array[1] + " is not a file");
             }
-        })
+        }
+        else {
+            this.output_to_terminal("Error, could not find " + input_array[1]);
+        }
     }
-}
-componentWillMount() {
-    const files = {
-        name: '/',
-        type: 'directory',
-        children: [{
-            name: 'projects',
+    ls = (input_array) => {
+        if (input_array.length == 1) {
+            let children = this.state.current_dir.children;
+            children.forEach(val => {
+                if (val.type == "directory") {
+                    this.output_to_terminal(val.name + "/");
+                }
+                else {
+                    this.output_to_terminal(val.name);
+                }
+            })
+        }
+    }
+    componentWillMount() {
+        const files = {
+            name: '/',
             type: 'directory',
             children: [{
-                name: 'pymaths',
+                name: 'projects',
                 type: 'directory',
                 children: [{
-                    name: 'pymaths.info',
-                    type: 'file',
-                    data: 'pymaths is cool'
+                    name: 'pymaths',
+                    type: 'directory',
+                    children: [{
+                        name: 'pymaths.info',
+                        type: 'file',
+                        data: 'pymaths is cool'
+                    }]
+                }, {
+                    name: 'dotfiles',
+                    type: 'directory',
                 }]
-            }, {
-                name: 'dotfiles',
+            },
+            {
+                name: 'blog',
                 type: 'directory',
-            }]
-        },
-        {
-            name: 'blog',
-            type: 'directory',
-            children: []
-        },
-        {
-            name: 'umair.txt',
-            type: 'file',
-            data: 'umair darr'
+                children: []
+            },
+            {
+                name: 'umair.txt',
+                type: 'file',
+                data: 'umair darr'
+            }
+            ]
         }
-        ]
+        getFileSystem().then(filesystem => {
+            this.setState({ filesystem: filesystem })
+        }).catch(err =>
+            this.setState({
+                filesystem: files,
+                current_dir: files
+            })
+        )
     }
-    getFileSystem().then(filesystem => {
-        this.setState({ filesystem: filesystem })
-    }).catch(err =>
-        this.setState({
-            filesystem: files,
-            current_dir: files
-        })
-    )
-}
 
 }
 export default TerminalContainer;   
