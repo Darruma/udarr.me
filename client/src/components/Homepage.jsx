@@ -6,10 +6,11 @@ class Homepage extends Component {
     render() { 
         return (<div className='homepage-container'> 
             <div className='centered-title'>Umair Darr</div>
-            <TerminalContainer initial_url={this.props.url}>
+            <TerminalContainer >
             </TerminalContainer>
         </div>  );
     }
+    
 }
  
 export default Homepage;

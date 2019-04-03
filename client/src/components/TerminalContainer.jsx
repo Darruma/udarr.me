@@ -9,9 +9,7 @@ class TerminalContainer extends Component {
         terminal_data: [''],
         current_dir_name: '/',
         current_dir: {},
-        full_path: "",
-        commandHistory: [],
-        command_pointer: 0
+        full_path: ""
     }
     render() {
         return (<div>
@@ -33,6 +31,7 @@ class TerminalContainer extends Component {
             navigate("/");
         }
         else {
+            console.log(this.state.full_path);  
             navigate(this.state.full_path)
         }
     }
@@ -60,7 +59,7 @@ class TerminalContainer extends Component {
     }
 
     execute = (input) => {
-        this.output_to_terminal("[client@darruma " + this.state.current_dir_name + "]$ " + input, "#fbf1c7");
+        
         let input_array = input.split(" ");
         switch (input_array[0]) {
             case "cd":
@@ -97,26 +96,11 @@ class TerminalContainer extends Component {
     handleTerminalKey = (e) => {
         e.persist();
         if (e.keyCode === 13) {
+            this.output_to_terminal("[client@darruma " + this.state.current_dir_name + "]$ " + e.target.value, "#fbf1c7");
             this.execute(e.target.value)
-            this.setState({
-                commandHistory: this.state.commandHistory.concat(e.target.value),
-                command_pointer: this.commandHistory.length - 1
-            });
             e.target.value = ""
-
-
         }
-        if (e.keyCode === 38) {
-            const command = this.state.commandHistory[this.state.command_pointer - 1];
-            if (command) {
-                e.target.value = command
-                this.setState({
-                    command_pointer: this.state.command_pointer - 1
-                })
-            }
-
-        }
-        // implement shell history
+      
     }
 
 
@@ -149,7 +133,8 @@ class TerminalContainer extends Component {
             })
         }
     }
-    componentWillMount() {
+    componentDidMount() {
+       
         const files = {
             name: '/',
             type: 'directory',
@@ -187,6 +172,8 @@ class TerminalContainer extends Component {
             this.setState({
                 filesystem: files,
                 current_dir: files
+            },()=> {
+                this.execute('cd ' + window.location.pathname.substring(1) )
             })
         )
     }

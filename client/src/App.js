@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className='main-flexbox-row'>
         <Router className='left-side' primary={false}>  
-          <Homepage url={this.state.inital_url} path='/*'></Homepage>
+          <Homepage path='/*'></Homepage>
         </Router>
         <Router>
           <BlogContainer path='/blog'></BlogContainer>
@@ -23,7 +23,7 @@ class App extends Component {
     );
   }
   componentDidMount = () =>{
-    this.setState({inital_url:window.location.href})
+    
   }
 }
 
