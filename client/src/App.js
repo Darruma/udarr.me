@@ -14,7 +14,7 @@ class App extends Component {
         <Router className='left-side' primary={false}>  
           <Homepage path='/*'></Homepage>
         </Router>
-        <Router>
+        <Router className='right-side'>
           <BlogContainer path='/blog'></BlogContainer>
           <ProjectsContainer path='/projects'></ProjectsContainer>
         </Router>

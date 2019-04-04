@@ -7,8 +7,15 @@
   height: 100vh;
 }
 .left-side{ 
-  position: sticky;
-  background-color: #32302f;
-  height: 100%;
-  width: 40%;
+    position: sticky;
+    background-color: #32302f;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: initial;
+  
+}
+.right-side{
+    width: 60%;
 }

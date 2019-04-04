@@ -3,22 +3,37 @@ import '../css/projects.css'
 import { Link } from '@reach/router';
 
 class ProjectsContainer extends Component {
-    state = { projects: [],status:''}
+    state = { projects: [], status: '' }
     render() {
         return (<div className='projects-container'>
-           projects
+            {this.state.projects.map(project => {
+                return (<div className='project-container'>
+                    <div className='project'>
+                        <div className='project-main'>
+                            <p className='project-title'>
+                                {project.name}
+                            </p>
+                            <div className='project-description'>
+                            {project.description}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>)
+            })}
         </div>);
     }
     componentWillMount() {
         fetch('/api/projects')
             .then(res => res.json())
-            .then(projects => {
+            .then(p => {
                 this.setState({
-                    projects: projects
+                    projects: p.data
                 })
             }).catch(err => {
                 console.log(err);
-                this.setState({status:'Error, data unavailable'});
+                this.setState({ status: 'Error, data unavailable' });
             })
     }
 }

@@ -11,3 +11,8 @@
     font-family: 'Inconsolata', sans-serif;
     color: white;
 }
+.homepage-container{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
