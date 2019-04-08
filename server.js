@@ -29,6 +29,7 @@ app.use(
 );
 app.use('/api', projects);
 app.use('/api',gym);
+app.use('/api',filesystem)
 app.use('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });

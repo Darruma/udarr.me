@@ -169,10 +169,12 @@ class TerminalContainer extends Component {
         getFileSystem().then(filesystem => {
             this.setState({ filesystem: filesystem })
         }).catch(err =>
+
             this.setState({
                 filesystem: files,
                 current_dir: files
             },()=> {
+                console.log(err)
                 this.execute('cd ' + window.location.pathname.substring(1) )
             })
         )

@@ -2,8 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 const fetch_authenticated = require('../actions/fetch_authenticated');
-const blog = JSON.parse(fs.readFileSync('../blog/blog.json'));
-const get_projects = require('../actions/get_projects');
+const get_repos = require('../actions/get_repos');
 router.get('/filesystem', (req, res) => {
     let fs = {
         name: '/',
@@ -26,7 +25,7 @@ router.get('/filesystem', (req, res) => {
             },
         ]
     }
-    get_projects.then(values => {
+    get_repos().then(values => {
         var projects = []
         values[values.length - 1].forEach((repo, index) => {
             projects.push({
@@ -39,7 +38,7 @@ router.get('/filesystem', (req, res) => {
             })
         }
         )
-        fs.projects.children = projects.map(element => {
+        fs.children[0].children = projects.map(element => {
             return {
                 name:element.name,
                 type:'directory',
@@ -52,11 +51,14 @@ router.get('/filesystem', (req, res) => {
                 ]
             }
         })
+res.send({
+        success:true,
+        filesystem:fs
+     })
     }
+     
     )
 
-
 })
-
 
 module.exports = router;
