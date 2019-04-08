@@ -27,18 +27,19 @@ router.get('/filesystem', (req, res) => {
     }
     get_repos().then(values => {
         var projects = []
+        let repos_amount = values[values.length -1]
         values[values.length - 1].forEach((repo, index) => {
             projects.push({
                 name: repo.name,
                 description: repo.description,
                 link: repo.html_url,
-                languages: values[index],
+                languages: values[index+repos_amount],
                 pushed_at: repo.pushed_at,
                 webpage: repo.homepage
             })
         }
         )
-        fs.children[0].children = projects.map(element => {
+        fs.children[0].children = projects.map((element, index)  => {
             return {
                 name:element.name,
                 type:'directory',
@@ -46,7 +47,7 @@ router.get('/filesystem', (req, res) => {
                     {
                         name:element.name + ".txt",
                         type:'file',
-                        data:element.description
+                        data:values[index].content
                     }
                 ]
             }
