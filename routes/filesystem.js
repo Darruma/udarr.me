@@ -40,14 +40,23 @@ router.get('/filesystem', (req, res) => {
         }
         )
         fs.children[0].children = projects.map((element, index)  => {
-            return {
+                let base64_txt = values[index].content
+                let txt;
+                if (base64_txt != undefined) {
+                      txt = Buffer.from(values[index].content,'base64').toString('ascii')
+                } else {
+                    console.log("undefined")
+                    txt = element.name
+                }
+                
+                return {
                 name:element.name,
                 type:'directory',
                 children:[
                     {
                         name:element.name + ".txt",
                         type:'file',
-                        data:values[index].content
+                        data:Buffer.from(values[index].content,'base64').toString('ascii')
                     }
                 ]
             }

@@ -166,8 +166,8 @@ class TerminalContainer extends Component {
             }
             ]
         }
-        getFileSystem().then(filesystem => {
-            this.setState({ filesystem: filesystem })
+        getFileSystem().then(response => {
+            this.setState({ filesystem: response.filesystem,current_dir:response.filesystem })
         }).catch(err =>
 
             this.setState({
