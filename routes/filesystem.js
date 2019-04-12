@@ -56,7 +56,7 @@ router.get('/filesystem', (req, res) => {
                     {
                         name:element.name + ".txt",
                         type:'file',
-                        data:Buffer.from(values[index].content,'base64').toString('ascii')
+                        data:txt
                     }
                 ]
             }
