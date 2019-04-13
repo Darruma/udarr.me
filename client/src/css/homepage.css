@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
 .centered-title {
     text-align: center;
     padding-top: 5vh;
@@ -11,7 +12,8 @@
     font-family: 'Inconsolata', sans-serif;
     color: white;
 }
-.homepage-container{
+
+.homepage-container {
     display: flex;
     justify-content: center;
     width: 80%;

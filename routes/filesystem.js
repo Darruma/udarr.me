@@ -27,48 +27,46 @@ router.get('/filesystem', (req, res) => {
     }
     get_repos().then(values => {
         var projects = []
-        let repos_amount = values[values.length -1]
+        let repos_amount = values[values.length - 1]
         values[values.length - 1].forEach((repo, index) => {
             projects.push({
                 name: repo.name,
                 description: repo.description,
                 link: repo.html_url,
-                languages: values[index+repos_amount],
+                languages: values[index + repos_amount],
                 pushed_at: repo.pushed_at,
                 webpage: repo.homepage
             })
         }
         )
-        fs.children[0].children = projects.map((element, index)  => {
-                let base64_txt = values[index].content
-                let txt;
-                if (base64_txt != undefined) {
-                      txt = Buffer.from(values[index].content,'base64').toString('ascii')
-                } else {
-                    console.log("undefined")
-                    txt = element.name
-                }
-                
-                return {
-                name:element.name,
-                type:'directory',
-                children:[
+        fs.children[0].children = projects.map((element, index) => {
+            let base64_txt = values[index].content
+            let txt;
+            if (base64_txt != undefined) {
+                txt = Buffer.from(values[index].content, 'base64').toString('ascii')
+            } else {
+                txt = element.name
+            }
+
+            return {
+                name: element.name,
+                type: 'directory',
+                children: [
                     {
-                        name:element.name + ".txt",
-                        type:'file',
-                        data:txt
+                        name: element.name + ".txt",
+                        type: 'file',
+                        data: txt
                     }
                 ]
             }
         })
-res.send({
-        success:true,
-        filesystem:fs
-     })
+        res.send({
+            success: true,
+            filesystem: fs,
+            projects: values[values.length - 1]
+        })
     }
-     
     )
-
 })
 
 module.exports = router;

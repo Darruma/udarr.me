@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const session = require('express-session');
 require('dotenv').config()
-console.log("app Running")
 app.enable('trust proxy');
 
 app.set('json spaces', 2);
@@ -36,5 +35,5 @@ app.use('*', (req, res) => {
 
 app.listen(process.env.PORT,()=>
 {
-	console.log("listening")
+	console.log("listening on PORT " + process.env.PORT)
 })

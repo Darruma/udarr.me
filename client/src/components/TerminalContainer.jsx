@@ -4,13 +4,14 @@ import getFileSystem from '../actions/filesystem'
 import resolvePath from '../actions/resolvepath';
 import cat from '../actions/cat';
 import ls from '../actions/ls'
+import display_object from '../actions/display_object'
 import { navigate } from '@reach/router'
 class TerminalContainer extends Component {
     state = {
-        filesystem: {},
+        filesystem: this.props.filesystem,
         terminal_data: [''],
         current_dir_name: '/',
-        current_dir: {},
+        current_dir: this.props.filesystem,
         full_path: ""
     }
     render() {
@@ -19,14 +20,7 @@ class TerminalContainer extends Component {
         </div>);
     }
     output_to_terminal = (data, color, layout) => {
-        this.setState((state) => {
-            state.terminal_data = state.terminal_data.concat({
-                data: data,
-                color: color,
-                layout: layout
-            })
-            return state
-        })
+        this.setState(display_object(data, color, layout))
     }
     navigate_to_path = () => {
         if (this.state.full_path == "") {

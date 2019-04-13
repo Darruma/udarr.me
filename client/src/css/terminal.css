@@ -4,16 +4,19 @@
     margin: 20px;
     padding-bottom: 100px;
 }
+
 .terminal-theme {
     padding-right: 10px;
     color: #fbf1c7;
     font-family: 'Inconsolata', monospace;
     font-size: 20px;
 }
+
 .terminal-prompt {
     height: 1em;
     white-space: nowrap;
 }
+
 .terminal-button {
     width: 10px;
     height: 10px;
@@ -44,6 +47,7 @@
     justify-content: flex-start;
     align-items: center;
 }
+
 .terminal-data {
     display: flex;
     flex-direction: column;
@@ -62,8 +66,8 @@
 
 .terminal-current-line {
     display: flex;
-    
 }
+
 .terminal-color {
     background-color: #3c3836
 }
