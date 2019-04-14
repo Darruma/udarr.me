@@ -1,7 +1,6 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
-const fetch_authenticated = require('../actions/fetch_authenticated');
 const get_repos = require('../actions/get_repos');
 router.get('/filesystem', (req, res) => {
     let fs = {
@@ -26,7 +25,6 @@ router.get('/filesystem', (req, res) => {
         ]
     }
     get_repos().then(values => {
-        var projects = []
         let repos_amount = values[values.length - 1]
         values[values.length - 1].forEach((repo, index) => {
             projects.push({
@@ -47,7 +45,6 @@ router.get('/filesystem', (req, res) => {
             } else {
                 txt = element.name
             }
-
             return {
                 name: element.name,
                 type: 'directory',
@@ -63,7 +60,6 @@ router.get('/filesystem', (req, res) => {
         res.send({
             success: true,
             filesystem: fs,
-            projects: values[values.length - 1]
         })
     }
     )

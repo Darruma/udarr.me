@@ -1,40 +1,25 @@
 import React, { Component } from 'react';
+import Project from './Project'
 import '../css/projects.css'
-import { Link } from '@reach/router';
-
+import getProjects from '../actions/get_projects'
 class ProjectsContainer extends Component {
-    state = { projects: [], status: '' }
+    state = {
+        projects: {}
+    }
     render() {
         return (<div className='projects-container'>
             {this.state.projects.map(project => {
-                return (<div className='project-container'>
-                    <div className='project'>
-                        <div className='project-main'>
-                            <p className='project-title'>
-                                {project.name}
-                            </p>
-                            <div className='project-description'>
-                            {project.description}
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>)
+                return (<Project name={project.name} description={project.description}></Project>)
             })}
         </div>);
     }
-    componentWillMount() {
-        fetch('/api/projects')
-            .then(res => res.json())
-            .then(p => {
-                this.setState({
-                    projects: p.data
-                })
-            }).catch(err => {
-                console.log(err);
-                this.setState({ status: 'Error, data unavailable' });
+
+    componentWillMount = () => {
+        getProjects.then(response => {
+            this.setState({
+                projects: response.data
             })
+        })
     }
 }
 

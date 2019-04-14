@@ -1,27 +1,36 @@
 import React, { Component } from 'react';
+import { navigate } from '@reach/router'
+
+
 import Terminal from './Terminal';
-import getFileSystem from '../actions/filesystem'
 import resolvePath from '../actions/resolvepath';
 import cat from '../actions/cat';
 import ls from '../actions/ls'
 import display_object from '../actions/display_object'
-import { navigate } from '@reach/router'
+import getFilesystem from '../actions/get_filesystem'
+
+
 class TerminalContainer extends Component {
+
     state = {
-        filesystem: this.props.filesystem,
+        filesystem: {},
         terminal_data: [''],
         current_dir_name: '/',
-        current_dir: this.props.filesystem,
+        current_dir: {},
         full_path: ""
     }
+
     render() {
         return (<div>
             <Terminal onTerminalKey={this.handleTerminalKey} current_folder={this.state.current_dir_name} terminal_data={this.state.terminal_data}></Terminal>
         </div>);
     }
+
     output_to_terminal = (data, color, layout) => {
         this.setState(display_object(data, color, layout))
     }
+
+
     navigate_to_path = () => {
         if (this.state.full_path == "") {
             navigate("/");
@@ -54,7 +63,6 @@ class TerminalContainer extends Component {
     }
 
     execute = (input) => {
-
         let input_array = input.split(" ");
         switch (input_array[0]) {
             case "cd":
@@ -81,6 +89,8 @@ class TerminalContainer extends Component {
                 this.setState({ terminal_data: [] })
                 break;
             case "ls":
+                console.log(this.state.filesystem);
+                console.log(this.state.current_dir)
                 let ls_output = ls(input_array, this.state.current_dir);
                 this.output_to_terminal(ls_output);
                 break;
@@ -89,6 +99,7 @@ class TerminalContainer extends Component {
                 break;
         }
     }
+
     handleTerminalKey = (e) => {
         e.persist();
         if (e.keyCode === 13) {
@@ -96,58 +107,30 @@ class TerminalContainer extends Component {
             this.execute(e.target.value)
             e.target.value = ""
         }
-
     }
-    componentDidMount() {
 
-        const files = {
-            name: '/',
-            type: 'directory',
-            children: [{
-                name: 'projects',
-                type: 'directory',
-                children: [{
-                    name: 'pymaths',
-                    type: 'directory',
-                    children: [{
-                        name: 'pymaths.info',
-                        type: 'file',
-                        data: 'pymaths is cool'
-                    }]
-                }, {
-                    name: 'dotfiles',
-                    type: 'directory',
-                }]
-            },
-            {
-                name: 'blog',
-                type: 'directory',
-                children: []
-            },
-            {
-                name: 'umair.txt',
-                type: 'file',
-                data: 'umair darr'
-            }
-            ]
-        }
-        getFileSystem().then(response => {
+    componentDidMount = () => {
+        getFilesystem().then(response => {
             if (response.success) {
                 this.setState({
-                    filesystem: response.filesystem,
+                    filesystem: reponse.filesystem,
                     current_dir: response.filesystem
                 })
-
             }
-        }).catch(err =>
+        }).catch(err => {
+            const fs = {
+                name: '/',
+                type: 'directory',
+                children: [
+                    { name: 'error.txt', type: 'file', data: 'error' }
+                ]
+            }
             this.setState({
-                filesystem: files,
-                current_dir: files
-            }, () => {
-                this.execute('cd ' + window.location.pathname.substring(1))
+                filesystem: fs,
+                current_dir: fs
             })
-        )
+        })
+        this.execute('cd ' + window.location.pathname.substring(1))
     }
-
 }
 export default TerminalContainer;   
