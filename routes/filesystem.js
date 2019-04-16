@@ -1,7 +1,22 @@
 const express = require('express');
-const fs = require('fs');
 const router = express.Router();
 const get_repos = require('../actions/get_repos');
+
+function create_directory(name) {
+    return {
+        name: name,
+        type: 'directory',
+        children: []
+    }
+}
+function base64_to_ascii(b, name) {
+    if (b == undefined) {
+        return name
+    } else {
+        return Buffer.from(b, 'base64').toString('ascii');
+    }
+}
+
 router.get('/filesystem', (req, res) => {
     let fs = {
         name: '/',
@@ -25,37 +40,35 @@ router.get('/filesystem', (req, res) => {
         ]
     }
     get_repos().then(values => {
-        let repos_amount = values[values.length - 1]
-        values[values.length - 1].forEach((repo, index) => {
-            projects.push({
-                name: repo.name,
-                description: repo.description,
-                link: repo.html_url,
-                languages: values[index + repos_amount],
-                pushed_at: repo.pushed_at,
-                webpage: repo.homepage
-            })
-        }
-        )
-        fs.children[0].children = projects.map((element, index) => {
-            let base64_txt = values[index].content
-            let txt;
-            if (base64_txt != undefined) {
-                txt = Buffer.from(values[index].content, 'base64').toString('ascii')
-            } else {
-                txt = element.name
-            }
-            return {
-                name: element.name,
-                type: 'directory',
-                children: [
+        const repo_data = values[values.length - 1]
+        const repos_amount = repo_data.length
+        const language_objects = values.slice(repos_amount, values.length - 1)
+        let langs = new Set();
+        language_objects.forEach(obj => {
+            Object.keys(obj).forEach(lang => langs.add(lang))
+        })
+        langs.forEach(l => {
+            fs.children[0].children.push(create_directory(l));
+        })
+        console.log(fs.children[0].children)
+        repo_data.forEach((repo, index) => {
+            const readme = base64_to_ascii(values[index].content, repo.name);
+            repo_languages = Object.keys(language_objects[index])
+            repo_languages.forEach(lang => {
+                let folderIndex = fs.children[0].children.findIndex(language_folder => language_folder.name == lang);
+                fs.children[0].children[folderIndex].children.push(
                     {
-                        name: element.name + ".txt",
-                        type: 'file',
-                        data: txt
+                        name: repo.name,
+                        type: 'directory',
+                        children: [{
+                            name: repo.name + ".md",
+                            type: 'file',
+                            data: readme
+                        }]
                     }
-                ]
-            }
+
+                )
+            })
         })
         res.send({
             success: true,

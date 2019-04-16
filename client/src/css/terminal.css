@@ -53,6 +53,8 @@
     flex-direction: column;
     border-radius: 0px 0px 5px 5px;
     height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .terminal-input {
