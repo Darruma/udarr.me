@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Router } from "@reach/router"
-import Homepage from './components/Homepage';
+import TerminalContainer from './components/TerminalContainer'
 import ProjectsContainer from './components/ProjectsContainer';
 import BlogContainer from './components/BlogContainer'
+import './css/homepage.css'
 class App extends Component {
 
-    state = {
-        filesystem: {},
-        projects: {}
-    }
+
     render() {
         return (
             <div className='main-flexbox-row'>
-                <Router className='left-side' primary={false}>
-                    <Homepage path='/*'></Homepage>
-                </Router>
+                <div className='left-side'>
+                    <div className='homepage-container'>
+                        <div className='centered-title'>Umair Darr</div>
+                        <TerminalContainer  > </TerminalContainer>
+                    </div>
+                </div>
                 <Router className='right-side'>
                     <BlogContainer path='/blog'></BlogContainer>
                     <ProjectsContainer path='/projects'></ProjectsContainer>
+                    <ProjectsContainer path='/projects/:lang'></ProjectsContainer>
                 </Router>
             </div >
 

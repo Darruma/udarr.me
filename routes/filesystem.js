@@ -50,7 +50,6 @@ router.get('/filesystem', (req, res) => {
         langs.forEach(l => {
             fs.children[0].children.push(create_directory(l));
         })
-        console.log(fs.children[0].children)
         repo_data.forEach((repo, index) => {
             const readme = base64_to_ascii(values[index].content, repo.name);
             repo_languages = Object.keys(language_objects[index])

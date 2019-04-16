@@ -16,7 +16,7 @@ router.get('/projects', (req, res) => {
                 name: repo.name,
                 description: repo.description,
                 link: repo.html_url,
-                languages: values[index],
+                languages: Object.keys(values[index]),
                 pushed_at: repo.pushed_at,
                 webpage: repo.homepage
             })
