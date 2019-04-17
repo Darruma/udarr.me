@@ -4,7 +4,7 @@ export default (url, type) => {
             .then(response => {
                 if (response.success) {
                     dispatch({
-                        type: `GET ${type}`,
+                        type: `GET ${type}_SUCCESS`,
                         data: response.data
                     })
                 } else {
