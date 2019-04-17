@@ -6,8 +6,12 @@
     "@reach/router": "^1.2.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-redux": "^7.0.2",
     "react-scripts": "2.1.8",
-    "react-typist": "^2.0.5"
+    "react-typist": "^2.0.5",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

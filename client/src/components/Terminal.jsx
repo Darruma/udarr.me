@@ -11,7 +11,7 @@ const Terminal = props => {
                 </div>
                 <div className='terminal-data terminal-color terminal-theme'>
                     {props.terminal_data.map(line => {
-                        return (<div style={{ color: line.color, display: line.layout }} >{line.data}</div>)
+                        return (<div>{line}</div>)
                     }
                     )}
                     <div className='terminal-current-line terminal-color'>
