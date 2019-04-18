@@ -1,6 +1,5 @@
-export default (names) => {
+export default () => {
     return {
         type: 'UPDATE_AUTOCOMPLETE',
-        names: names
     }
 }

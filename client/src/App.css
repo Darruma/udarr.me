@@ -1,12 +1,14 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
-.main-flexbox-row{
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
+
+.main-flexbox {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
 }
-.left-side{ 
+
+.left-side {
     position: sticky;
     background-color: #32302f;
     height: 100%;
@@ -14,8 +16,27 @@
     display: flex;
     justify-content: center;
     align-items: initial;
-  
 }
-.right-side{
+
+.right-side {
     width: 60%;
+    height: 100%;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .main-flexbox {
+        display: flex;
+        flex-direction: column;
+    }
+    .left-side {
+        position: sticky;
+        background-color: #32302f;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: initial;
+    }
+    .right-side {
+        width: 100%;
+    }
 }

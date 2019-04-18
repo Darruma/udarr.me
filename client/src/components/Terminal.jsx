@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import '../css/terminal.css'
 const Terminal = props => {
     return (
@@ -9,19 +10,24 @@ const Terminal = props => {
                     <div className='terminal-button amber' ></div>
                     <div className='terminal-button green' ></div>
                 </div>
+
                 <div className='terminal-data terminal-color terminal-theme'>
-                    {props.terminal_data.map(line => {
+                    {props.filesystem_loaded ? props.terminal_data.map(line => {
                         return (<div>{line}</div>)
                     }
-                    )}
-                    <div className='terminal-current-line terminal-color'>
+                    ) : <div>loading</div>}
+                    {props.filesystem_loaded && <div className='terminal-current-line terminal-color'>
                         <div className='terminal-theme terminal-prompt terminal-color'>{"[client@darruma " + props.current_folder + "]$"}</div>
                         <input spellCheck={false} onKeyDown={props.onTerminalKey} autoFocus={true} className='terminal-input terminal-color terminal-theme'></input>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>
     )
 }
-
-export default Terminal;
+const mapStateToProps = (state) => {
+    return {
+        filesystem_loaded: state.terminalReducer.filesystem_loaded
+    }
+}
+export default connect(mapStateToProps, null)(Terminal);

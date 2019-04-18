@@ -12,6 +12,12 @@
     font-size: 20px;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+    .terminal-theme {
+        font-size: 15px;
+    }
+}
+
 .terminal-prompt {
     height: 1em;
     white-space: nowrap;

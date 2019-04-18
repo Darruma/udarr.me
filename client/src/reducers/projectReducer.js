@@ -3,5 +3,10 @@ const intialState = {
     filter: null
 }
 export default (state = intialState, action) => {
-    return state
+    switch (action.type) {
+
+        default:
+            return state;
+
+    }
 }

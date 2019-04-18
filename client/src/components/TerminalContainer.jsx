@@ -11,16 +11,19 @@ import clearTerminal from '../actions/clearTerminal';
 import changeDirectory from '../actions/changeDirectory'
 import outputTerminal from '../actions/outputTerminal'
 import updateAutocomplete from '../actions/update_autocomplete';
-
+import getJSON from '../actions/getJSON'
 class TerminalContainer extends Component {
-
-
     render() {
         return (<div>
             <Terminal onTerminalKey={this.handleTerminalKey} current_folder={this.props.current_dir.name} terminal_data={this.props.terminal_data}></Terminal>
         </div>);
     }
+    componentDidMount = () => {
+        this.props.getJSON('/api/filesystem', 'FILESYSTEM').then(() => {
+            this.props.updateAutocomplete()
+        })
 
+    }
     output_to_terminal = (data) => {
         this.props.outputTerminal(data)
     }
@@ -29,11 +32,11 @@ class TerminalContainer extends Component {
         const fs = (root) ? this.props.filesystem : this.props.current_dir;
         const result = resolvePath(path, fs);
         this.props.changeDirectory(path, result);
-        this.props.updateAutocomplete(fs.children.map(e => e.name));
-        navigate(this.props.full_path);
+        this.props.updateAutocomplete()
+
     }
     execute = (input) => {
-        let input_array = input.split(" ");
+        let input_array = input.split(" ").filter(e => e != "");
         switch (input_array[0]) {
             case "cd":
                 if (input_array.length === 2) {
@@ -84,9 +87,7 @@ class TerminalContainer extends Component {
             }
         }
     }
-    componentDidMount = () => {
-        this.props.updateAutocomplete(this.props.current_dir.children.map(e => e.name));
-    }
+
 
 }
 const mapStateToProps = (state) => {
@@ -96,13 +97,12 @@ const mapStateToProps = (state) => {
         full_path: state.terminalReducer.full_path,
         autocomplete: state.terminalReducer.autocomplete
     }
-
 }
 const mapDispatchToProps = {
     changeDirectory,
     clearTerminal,
     outputTerminal,
-    updateAutocomplete
-
+    updateAutocomplete,
+    getJSON
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TerminalContainer);   
