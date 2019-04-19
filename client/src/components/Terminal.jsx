@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Loading } from './Loading'
 import '../css/terminal.css'
 const Terminal = props => {
     return (
@@ -15,7 +16,7 @@ const Terminal = props => {
                     {props.filesystem_loaded ? props.terminal_data.map(line => {
                         return (<div>{line}</div>)
                     }
-                    ) : <div>loading</div>}
+                    ) : <Loading />}
                     {props.filesystem_loaded && <div className='terminal-current-line terminal-color'>
                         <div className='terminal-theme terminal-prompt terminal-color'>{"[client@darruma " + props.current_folder + "]$"}</div>
                         <input spellCheck={false} onKeyDown={props.onTerminalKey} autoFocus={true} className='terminal-input terminal-color terminal-theme'></input>

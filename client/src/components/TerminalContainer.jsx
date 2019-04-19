@@ -42,6 +42,7 @@ class TerminalContainer extends Component {
                 if (input_array.length === 2) {
                     if (input_array[1] === "..") {
                         let path_behind = this.props.full_path.substring(0, this.props.full_path.lastIndexOf("/"));
+                        console.log(path_behind)
                         this.cd_dir(path_behind, true);
                     }
                     else {
