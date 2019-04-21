@@ -2,11 +2,10 @@ import React, { useEffect } from 'react'
 
 const Loading = () => {
     const [loadingStatus, setLoadingStatus] = useState('')
-    const [loop, setLoop] = useState()
     useEffect(() => {
-        setLoop(setInterval(() => setLoadingStatus(loadingStatus + ".")))
-        return function cleanup() {
-            clearInterval(loop)
+        const loop = setInterval(() => setLoadingStatus(loadingStatus + ".")))
+        return () => {
+           clearInterval(loop)
         }
     }, [])
     return (<div>
