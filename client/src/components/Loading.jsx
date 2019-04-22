@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
-
+import React, { useEffect,useState} from 'react'
 const Loading = () => {
-    const [loadingStatus, setLoadingStatus] = useState('')
+    const [loadingStatus, setLoadingStatus] = useState(".");
+  
     useEffect(() => {
-        const loop = setInterval(() => setLoadingStatus(loadingStatus + ".")))
-        return () => {
-           clearInterval(loop)
-        }
-    }, [])
-    return (<div>
-        {`Loading ${loadingStatus}`}
-    </div>)
-}
-export default Loading
+      const loop = setInterval(() => {
+        setLoadingStatus(ls => ls + ".");
+      }, 1000);
+  
+      return () => clearInterval(loop);
+    }, []);
+  
+    return (`Loading ${loadingStatus}`)
+  };
+export default Loading;

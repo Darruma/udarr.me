@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Loading } from './Loading'
 import '../css/terminal.css'
+import Loading from './Loading'
 const Terminal = props => {
     return (
         <div className='terminal-container'>

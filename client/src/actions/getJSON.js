@@ -4,7 +4,7 @@ export default (url, type) => {
             .then(response => {
                 if (response.success) {
                     dispatch({
-                        type: `GET_${type}_SUCCESS`,
+                        type: `FETCH_${type}_SUCCESS`,
                         data: response.filesystem
                     })
                 } else {
@@ -12,6 +12,11 @@ export default (url, type) => {
                         type: `ERROR`
                     })
                 }
+            }).catch((err) => {
+                dispatch({
+                    type:`FETCH_${type}_ERROR`,
+                    data:err
+                })
             })
     }
 }

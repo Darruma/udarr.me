@@ -22,26 +22,31 @@ class TerminalContainer extends Component {
         this.props.getJSON('/api/filesystem', 'FILESYSTEM').then(() => {
             this.props.updateAutocomplete()
         })
-
     }
     output_to_terminal = (data) => {
         this.props.outputTerminal(data)
     }
 
     cd_dir = (path, root) => {
-        const fs = (root) ? this.props.filesystem : this.props.current_dir;
-        const result = resolvePath(path, fs);
-        this.props.changeDirectory(path, result);
-        this.props.updateAutocomplete()
-
+            const fs = (root) ? this.props.filesystem : this.props.current_dir;
+            const result = resolvePath(path, fs);
+            if(root) {
+                this.props.changeDirectory(path, result);
+            } else {
+                this.props.changeDirectory(this.props.full_path + "/" +  path, result);
+            }
+            this.props.updateAutocomplete()
+       
     }
     execute = (input) => {
         let input_array = input.split(" ").filter(e => e != "");
         switch (input_array[0]) {
             case "cd":
+
                 if (input_array.length === 2) {
                     if (input_array[1] === "..") {
                         let path_behind = this.props.full_path.substring(0, this.props.full_path.lastIndexOf("/"));
+                        console.log(this.props.full_path)
                         console.log(path_behind)
                         this.cd_dir(path_behind, true);
                     }
@@ -95,6 +100,7 @@ const mapStateToProps = (state) => {
     return {
         terminal_data: state.terminalReducer.terminal_data,
         current_dir: state.terminalReducer.current_dir,
+        filesystem:state.terminalReducer.filesystem,
         full_path: state.terminalReducer.full_path,
         autocomplete: state.terminalReducer.autocomplete
     }

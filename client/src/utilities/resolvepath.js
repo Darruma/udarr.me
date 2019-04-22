@@ -1,6 +1,13 @@
 export default (path, root) => {
     const path_array = path.split("/").filter(item => item != "");
     let temp = root;
+    if(path_array[0] == "") {
+        return {
+            success:true,
+            data:root,
+            type:'directory'
+        }
+    }
     for (let i = 0; i < path_array.length; i++) {
         let path_name = path_array[i];
 
