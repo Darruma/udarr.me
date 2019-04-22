@@ -1,7 +1,6 @@
 export default (path, result) => {
     if (result.success) {
         if (result.type === 'directory') {
-            console.log(result)
             return {
                 type: 'CHANGE_DIRECTORY',
                 current_dir: result.data,

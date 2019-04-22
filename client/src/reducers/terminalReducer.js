@@ -3,11 +3,11 @@ const initalFS = {
         name: 'test',
         type: 'file',
         data: 'test'
-    },{
-        name:'folder',type:'directory',children:[{
-            name:'poop',
-            type:'directory',
-            children:[]
+    }, {
+        name: 'folder', type: 'directory', children: [{
+            name: 'poop',
+            type: 'directory',
+            children: []
         }]
     }]
 }
@@ -40,14 +40,14 @@ const terminalReducer = (state = intialState, action) => {
                 filesystem_loaded: true
             })
         case 'FETCH_FILESYSTEM_ERROR':
-            return Object.assign({},state, {
-                filesystem_loaded:true
+            return Object.assign({}, state, {
+                filesystem_loaded: true
             })
 
         case 'UPDATE_AUTOCOMPLETE':
             return Object.assign({}, state, {
                 autocomplete: [...state.autocomplete, ...state.current_dir.children.map(c => c.name)].filter(name => {
-                    return [...initalAC,...state.current_dir.children.map(c => c.name)].includes(name)
+                    return [...initalAC, ...state.current_dir.children.map(c => c.name)].includes(name)
                 })
             })
 
@@ -62,7 +62,6 @@ const terminalReducer = (state = intialState, action) => {
             })
         default:
             return state;
-
     }
 }
 export default terminalReducer
