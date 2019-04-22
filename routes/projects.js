@@ -11,11 +11,14 @@ router.get('/projects', async (req, res) => {
         const languages_data = await Promise.all(fetch_repos_data.map(repo => fetch_authenticated(repo.languages_url).then(res => res.json)))
         res.send({
             success: true,
-            data: fetch_repos_data.map((repo, index) => {
-                repo.languages = Object.keys(languages_data[index])
-                return repo
-            }
-            )
+            data: fetch_repos_data.map((repo, index) => ({
+                name: repo.name,
+                description: repo.description,
+                link: repo.html_url,
+                languages: Object.keys(languages_data[index]),
+                pushed_at: repo.pushed_at,
+                webpage: repo.webpage
+            }))
         })
     }
     catch (err) {
