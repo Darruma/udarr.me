@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { navigate } from '@reach/router'
 import { connect } from 'react-redux'
 
 import Terminal from './Terminal';
@@ -10,7 +9,7 @@ import ls from '../utilities/ls'
 import clearTerminal from '../actions/clearTerminal';
 import changeDirectory from '../actions/changeDirectory'
 import outputTerminal from '../actions/outputTerminal'
-import updateAutocomplete from '../actions/update_autocomplete';
+import updateAutocomplete from '../actions/updateAutocomplete';
 import getJSON from '../actions/getJSON'
 class TerminalContainer extends Component {
     render() {
@@ -18,25 +17,25 @@ class TerminalContainer extends Component {
             <Terminal onTerminalKey={this.handleTerminalKey} current_folder={this.props.current_dir.name} terminal_data={this.props.terminal_data}></Terminal>
         </div>);
     }
-    componentDidMount = () => {
-        this.props.getJSON('/api/filesystem', 'FILESYSTEM').then(() => {
-            this.props.updateAutocomplete()
-        })
+    componentDidMount = async () => {
+        await this.props.getJSON();
+        this.props.updateAutocomplete();
+
     }
     output_to_terminal = (data) => {
         this.props.outputTerminal(data)
     }
 
     cd_dir = (path, root) => {
-            const fs = (root) ? this.props.filesystem : this.props.current_dir;
-            const result = resolvePath(path, fs);
-            if(root) {
-                this.props.changeDirectory(path, result);
-            } else {
-                this.props.changeDirectory(this.props.full_path + "/" +  path, result);
-            }
-            this.props.updateAutocomplete()
-       
+        const fs = (root) ? this.props.filesystem : this.props.current_dir;
+        const result = resolvePath(path, fs);
+        if (root) {
+            this.props.changeDirectory(path, result);
+        } else {
+            this.props.changeDirectory(this.props.full_path + "/" + path, result);
+        }
+        this.props.updateAutocomplete()
+
     }
     execute = (input) => {
         let input_array = input.split(" ").filter(e => e != "");
@@ -67,7 +66,7 @@ class TerminalContainer extends Component {
                 break;
         }
     }
-    
+
     handleTerminalKey = (e) => {
         e.persist();
         if (e.keyCode === 13) {
@@ -97,7 +96,7 @@ const mapStateToProps = (state) => {
     return {
         terminal_data: state.terminalReducer.terminal_data,
         current_dir: state.terminalReducer.current_dir,
-        filesystem:state.terminalReducer.filesystem,
+        filesystem: state.terminalReducer.filesystem,
         full_path: state.terminalReducer.full_path,
         autocomplete: state.terminalReducer.autocomplete
     }

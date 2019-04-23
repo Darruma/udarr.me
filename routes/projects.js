@@ -8,7 +8,9 @@ router.get('/projects', async (req, res) => {
     try {
         const fetch_repos_response = await fetch_authenticated('https://api.github.com/users/Darruma/repos')
         const fetch_repos_data = await fetch_repos_response.json()
-        const languages_data = await Promise.all(fetch_repos_data.map(repo => fetch_authenticated(repo.languages_url).then(res => res.json)))
+        console.log(fetch_repos_data);
+        const languages_response = await Promise.all(fetch_repos_data.map(repo => fetch_authenticated(repo.languages_url)))
+        const languages_data = await Promise.all(languages_response.map(res => res.json()))
         res.send({
             success: true,
             data: fetch_repos_data.map((repo, index) => ({

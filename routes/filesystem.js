@@ -35,9 +35,11 @@ router.get('/filesystem', async (req, res) => {
         const repo_data = data[data.length - 1]
         const repos_amount = repo_data.length
         const language_objects = data.slice(repos_amount, data.length - 1)
+        console.log(language_objects);
         const langs = Array.from(new Set(language_objects.reduce((arr, obj) => {
-            return arr.concat(Object.keys(obj))
-        })))
+            return [...arr, ...Object.keys(obj)]
+        }, [])))
+        console.log(langs)
         fs.children[0].children = langs.map(l => {
             return {
                 name: l,
@@ -68,9 +70,10 @@ router.get('/filesystem', async (req, res) => {
         })
     }
     catch (err) {
+        console.log(err)
         res.send({
             success: false,
-            error: 'Error'
+            error: err
         })
     }
 })
