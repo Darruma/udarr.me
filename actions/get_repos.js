@@ -11,5 +11,4 @@ module.exports = async () => {
     } catch (err) {
         return []
     }
-
 }
