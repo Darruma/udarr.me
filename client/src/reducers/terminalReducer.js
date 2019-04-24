@@ -46,13 +46,11 @@ const terminalReducer = (state = intialState, action) => {
 
         case 'UPDATE_AUTOCOMPLETE':
             return Object.assign({}, state, {
-                autocomplete: [...state.autocomplete, ...state.current_dir.children.map(c => c.name)].filter(name => {
-                    return [...initalAC, ...state.current_dir.children.map(c => c.name)].includes(name)
-                })
+                autocomplete: [...initalAC, action.autocomplete]
             })
 
         case 'CHANGE_DIRECTORY':
-            console.log(action.path)
+            console.log("action path : " + action.path)
             return Object.assign({}, state, {
                 current_dir: action.current_dir,
                 full_path: action.path

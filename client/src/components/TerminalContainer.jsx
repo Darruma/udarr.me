@@ -23,7 +23,7 @@ class TerminalContainer extends Component {
     componentDidMount = async () => {
         await this.props.getJSON('/api/filesystem');
         this.props.changeDirectory(window.location.pathname.substring(1), resolvePath(window.location.pathname.substring(1), this.props.filesystem))
-        this.props.updateAutocomplete();
+        this.props.updateAutocomplete(this.props.current_dir);
 
     }
     output_to_terminal = (data) => {
@@ -45,7 +45,7 @@ class TerminalContainer extends Component {
             this.props.changeDirectory(this.props.full_path + "/" + path, result)
             navigate(this.props.full_path + "/" + path)
         }
-        this.props.updateAutocomplete()
+        this.props.updateAutocomplete(this.props.current_dir)
     }
     execute = (input) => {
         let input_array = input.split(" ").filter(e => e != "");
