@@ -35,6 +35,17 @@ router.get('/filesystem', async (req, res) => {
         const repo_data = data[data.length - 1]
         const repos_amount = repo_data.length
         const language_objects = data.slice(repos_amount, data.length - 1)
+        const projects = repo_data.map((repo, index) => {
+            return {
+                name: repo.name,
+                description: repo.description,
+                link: repo.html_url,
+                languages: Object.keys(language_objects[index]),
+                pushed_at: repo.pushed_at,
+                webpage: repo.webpage
+            }
+        })
+
         const langs = Array.from(new Set(language_objects.reduce((arr, obj) => {
             return [...arr, ...Object.keys(obj)]
         }, [])))
@@ -65,10 +76,10 @@ router.get('/filesystem', async (req, res) => {
         res.send({
             success: true,
             filesystem: fs,
+            projects: projects
         })
     }
     catch (err) {
-        console.log(err)
         res.send({
             success: false,
             error: err

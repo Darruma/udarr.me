@@ -11,6 +11,7 @@ import changeDirectory from '../actions/changeDirectory'
 import outputTerminal from '../actions/outputTerminal'
 import updateAutocomplete from '../actions/updateAutocomplete';
 import getJSON from '../actions/getJSON'
+
 class TerminalContainer extends Component {
     render() {
         return (<div>
@@ -18,7 +19,7 @@ class TerminalContainer extends Component {
         </div>);
     }
     componentDidMount = async () => {
-        await this.props.getJSON('/api/filesystem', 'FILESYSTEM');
+        await this.props.getJSON('/api/filesystem');
         this.props.updateAutocomplete();
 
     }
