@@ -18,7 +18,7 @@ class TerminalContainer extends Component {
         </div>);
     }
     componentDidMount = async () => {
-        await this.props.getJSON();
+        await this.props.getJSON('/api/filesystem', 'FILESYSTEM');
         this.props.updateAutocomplete();
 
     }
@@ -45,6 +45,9 @@ class TerminalContainer extends Component {
                     if (input_array[1] === "..") {
                         let path_behind = this.props.full_path.substring(0, this.props.full_path.lastIndexOf("/"));
                         this.cd_dir(path_behind, true);
+                    }
+                    else if (input_array[1] == "/") {
+                        this.cd_dir("", true)
                     }
                     else {
                         this.cd_dir(input_array[1], false);

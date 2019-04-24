@@ -1,12 +1,12 @@
 export default (url, type) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         try {
-            const response = fetch(url)
-            const data = response.json()
+            const response = await fetch(url)
+            const data = await response.json()
             if (data.success) {
                 dispatch({
                     type: `FETCH_${type}_SUCCESS`,
-                    data: response.filesystem
+                    data: data.filesystem
                 })
             } else {
                 dispatch({
@@ -14,6 +14,7 @@ export default (url, type) => {
                 })
             }
         } catch (err) {
+            console.log(err)
             dispatch({
                 type: `FETCH_${type}_ERROR`,
                 data: err
