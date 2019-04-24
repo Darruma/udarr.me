@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { navigate } from '@reach/router';
+
 
 import Terminal from './Terminal';
 import resolvePath from '../utilities/resolvepath';
@@ -20,6 +22,7 @@ class TerminalContainer extends Component {
     }
     componentDidMount = async () => {
         await this.props.getJSON('/api/filesystem');
+        this.props.changeDirectory(window.location.pathname.substring(1), resolvePath(window.location.pathname.substring(1), this.props.filesystem))
         this.props.updateAutocomplete();
 
     }
@@ -32,11 +35,17 @@ class TerminalContainer extends Component {
         const result = resolvePath(path, fs);
         if (root) {
             this.props.changeDirectory(path, result);
+            if (path == "") {
+                navigate("/")
+            } else {
+                navigate(path)
+            }
+
         } else {
-            this.props.changeDirectory(this.props.full_path + "/" + path, result);
+            this.props.changeDirectory(this.props.full_path + "/" + path, result)
+            navigate(this.props.full_path + "/" + path)
         }
         this.props.updateAutocomplete()
-
     }
     execute = (input) => {
         let input_array = input.split(" ").filter(e => e != "");

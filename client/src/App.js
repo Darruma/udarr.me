@@ -3,10 +3,10 @@ import './App.css';
 import TerminalContainer from './components/TerminalContainer'
 import ProjectsContainer from './components/ProjectsContainer';
 import ProjectPage from './components/ProjectPage'
+import { connect } from 'react-redux'
 import { Router, Link } from "@reach/router"
 import './css/homepage.css'
 class App extends Component {
-
 
     render() {
         return (
@@ -19,9 +19,9 @@ class App extends Component {
                 </div>
                 <div className='right-side'>
                     <Router>
-
-                        <ProjectsContainer path='/projects'></ProjectsContainer>
-                        <ProjectPage path='/projects/:lang/:name'></ProjectPage>
+                        <ProjectsContainer key={'filtered'} projects={this.props.projects} path='/projects/*'></ProjectsContainer>
+                        <ProjectsContainer key={'all'} projects={this.props.projects} path='/projects'></ProjectsContainer>
+                        <ProjectPage path='/projects/:language/:name'></ProjectPage>
                     </Router>
                 </div>
 
@@ -31,4 +31,6 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect((state) => ({
+    projects: state.projectReducer.projects
+}), null)(App);
