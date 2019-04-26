@@ -6,8 +6,7 @@
 
 .centered-title {
     text-align: center;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-top: 2vh;
     font-size: 40px;
     font-family: 'Inconsolata', sans-serif;
     color: white;
@@ -18,3 +17,4 @@
     justify-content: center;
     width: 80%;
 }
+

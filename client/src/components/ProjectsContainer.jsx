@@ -11,7 +11,7 @@ const ProjectsContainer = (props) => {
         {projs.map(project => <Project
             name={project.name}
             description={project.description}
-            link={project.html_url}
+            link={project.link}
             languages={project.languages}
             key={project.pushed_at}
             webpage={project.webpage}>

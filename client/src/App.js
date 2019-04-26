@@ -4,6 +4,7 @@ import TerminalContainer from './components/TerminalContainer'
 import ProjectsContainer from './components/ProjectsContainer';
 import ProjectPage from './components/ProjectPage'
 import { connect } from 'react-redux'
+import Home from './components/Home'
 import { Router, Link } from "@reach/router"
 import './css/homepage.css'
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
                 </div>
                 <div className='right-side'>
                     <Router>
+                        <Home path="/"></Home>
                         <ProjectsContainer key={'filtered'} projects={this.props.projects} path='/projects/*'></ProjectsContainer>
                         <ProjectsContainer key={'all'} projects={this.props.projects} path='/projects'></ProjectsContainer>
                         <ProjectPage path='/projects/:language/:name'></ProjectPage>
