@@ -22,7 +22,6 @@ class TerminalContainer extends Component {
     }
     componentDidMount = async () => {
         await this.props.getJSON('/api/filesystem');
-        this.props.changeDirectory(window.location.pathname.substring(1), resolvePath(window.location.pathname.substring(1), this.props.filesystem))
         this.props.updateAutocomplete(this.props.current_dir);
 
     }
@@ -31,19 +30,12 @@ class TerminalContainer extends Component {
     }
 
     cd_dir = (path, root) => {
-        const fs = (root) ? this.props.filesystem : this.props.current_dir;
-        const result = resolvePath(path, fs);
+        console.log(path)
         if (root) {
-            this.props.changeDirectory(path, result);
-            if (path == "") {
-                navigate("/")
-            } else {
-                navigate(path)
-            }
-
+            this.props.changeDirectory(path, path, root)
         } else {
-            this.props.changeDirectory(this.props.full_path + "/" + path, result)
-            navigate(this.props.full_path + "/" + path)
+            this.props.changeDirectory(path, this.props.full_path + "/" + path, root)
+
         }
         this.props.updateAutocomplete(this.props.current_dir)
     }

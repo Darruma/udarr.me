@@ -1,0 +1,41 @@
+.project-card {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1);
+    margin-bottom: 30px;
+}
+.project-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.project-tech {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+.project-lang {
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 5px;
+    cursor: pointer;
+
+}
+.project-title {
+    font-family: 'Inconsolata', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.project-description {
+    text-align: center;
+    white-space: pre-line;
+    padding-left: 10px;
+}
