@@ -23,6 +23,8 @@ class TerminalContainer extends Component {
     componentDidMount = async () => {
         await this.props.getJSON('/api/filesystem');
         this.props.updateAutocomplete(this.props.current_dir);
+        this.output_to_terminal("[client@darruma /]$ cat instructions.txt")
+        this.execute("cat instructions.txt")
 
     }
     output_to_terminal = (data) => {
@@ -30,7 +32,6 @@ class TerminalContainer extends Component {
     }
 
     cd_dir = (path, root) => {
-        console.log(path)
         if (root) {
             this.props.changeDirectory(path, path, root)
         } else {
