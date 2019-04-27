@@ -1,6 +1,7 @@
 import store from '../store'
-import resolvepath from '../utilities/resolvepath';
+import resolvepath from '../../utilities/resolvepath'
 import { navigate } from '@reach/router';
+
 export default (path, full_path, root) => {
     const fs = (root) ? store.getState().terminalReducer.filesystem : store.getState().terminalReducer.current_dir;
     const result = resolvepath(path, fs)

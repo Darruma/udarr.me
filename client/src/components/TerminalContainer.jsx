@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { navigate } from '@reach/router';
-
-
 import Terminal from './Terminal';
-import resolvePath from '../utilities/resolvepath';
 import cat from '../utilities/cat';
 import ls from '../utilities/ls'
 
-import clearTerminal from '../actions/clearTerminal';
-import changeDirectory from '../actions/changeDirectory'
-import outputTerminal from '../actions/outputTerminal'
-import updateAutocomplete from '../actions/updateAutocomplete';
-import getJSON from '../actions/getJSON'
+import clearTerminal from '../redux/actions/clearTerminal';
+import changeDirectory from '../redux/actions/changeDirectory'
+import outputTerminal from '../redux/actions/outputTerminal'
+import updateAutocomplete from '../redux/actions/updateAutocomplete';
+import getJSON from '../redux/actions/getJSON'
 
 class TerminalContainer extends Component {
     render() {
