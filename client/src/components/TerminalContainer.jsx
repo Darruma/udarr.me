@@ -18,13 +18,10 @@ class TerminalContainer extends Component {
     }
     componentDidMount = async () => {
         await this.props.getJSON('/api/filesystem');
-        this.props.updateAutocomplete(this.props.current_dir);
-        this.output_to_terminal("[client@darruma /]$ cat instructions.txt")
+        this.props.updateAutocomplete(this.props.current_dir.children);
+        this.props.outputTerminal("[client@darruma /]$ cat instructions.txt")
         this.execute("cat instructions.txt")
 
-    }
-    output_to_terminal = (data) => {
-        this.props.outputTerminal(data)
     }
 
     cd_dir = (path, root) => {
@@ -32,9 +29,8 @@ class TerminalContainer extends Component {
             this.props.changeDirectory(path, path, root)
         } else {
             this.props.changeDirectory(path, this.props.full_path + "/" + path, root)
-
         }
-        this.props.updateAutocomplete(this.props.current_dir)
+
     }
     execute = (input) => {
         let input_array = input.split(" ").filter(e => e != "");
@@ -52,7 +48,7 @@ class TerminalContainer extends Component {
                         this.cd_dir(input_array[1], false);
                     }
                 } else {
-                    this.output_to_terminal("cd : Wrong amount of arguments")
+                    this.props.outputTerminal("cd : Wrong amount of arguments")
                 }
                 break;
             case "clear":
@@ -60,11 +56,11 @@ class TerminalContainer extends Component {
                 break;
             case "ls":
                 let ls_output = ls(input_array, this.props.current_dir);
-                this.output_to_terminal(ls_output);
+                this.props.outputTerminal(ls_output);
                 break;
             case "cat":
                 let output = cat(input, this.props.current_dir);
-                output.split("\n").map(line => this.output_to_terminal(line))
+                output.split("\n").map(line => this.props.outputTerminal(line))
                 break;
         }
     }
@@ -72,23 +68,23 @@ class TerminalContainer extends Component {
     handleTerminalKey = (e) => {
         e.persist();
         if (e.keyCode === 13) {
-            this.output_to_terminal("[client@darruma " + this.props.current_dir.name + "]$ " + e.target.value, "#fbf1c7");
+            this.props.outputTerminal("[client@darruma " + this.props.current_dir.name + "]$ " + e.target.value, "#fbf1c7");
             this.execute(e.target.value)
             e.target.value = ""
         } else if (e.keyCode == 9) {
             e.preventDefault()
             let words = e.target.value.split(" ")
-            const word = words[words.length - 1]
-            if (word != "") {
-                const possible_auto_completes = Array.from(this.props.autocomplete.filter(str => str.startsWith(word)));
-                if (possible_auto_completes.length == 1) {
-                    words[words.length - 1] = possible_auto_completes[0];
-                    e.target.value = words.join(" ");
-                } else if (possible_auto_completes.length > 0) {
-                    this.output_to_terminal("[client@darruma " + this.props.current_dir.name + "]$ " + e.target.value);
-                    this.output_to_terminal(possible_auto_completes.join(" "));
-                }
+            const lastElement = words.length - 1;
+            const currentWord = words[lastElement]
+            const completedWords = this.props.autocomplete.filter(word => word.startsWith(currentWord))
+            if (completedWords.length == 1) {
+                words[lastElement] = completedWords[0]
+                e.target.value = words.join(" ")
+            } else if (completedWords.length > 0) {
+                this.props.outputTerminal("[client@darruma " + this.props.current_dir.name + "]$ " + e.target.value);
+                this.props.outputTerminal(completedWords.join(" "));
             }
+
         }
     }
 

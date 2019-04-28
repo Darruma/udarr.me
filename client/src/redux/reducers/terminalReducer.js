@@ -46,7 +46,7 @@ const terminalReducer = (state = intialState, action) => {
 
         case 'UPDATE_AUTOCOMPLETE':
             return Object.assign({}, state, {
-                autocomplete: [...initalAC, action.autocomplete]
+                autocomplete: [...initalAC, ...action.autocomplete]
             })
 
         case 'CHANGE_DIRECTORY':

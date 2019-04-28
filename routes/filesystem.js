@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const get_repos = require('../actions/get_repos');
-const instructions = "Welcome to darruma.xyz \n Commands : \n > ls : Displays the folder and file names in the current directory \n > cd : Type cd followed by a directory to navigate to it \n > clear : type clear to reset the terminal \n > cat : type cat follwed by a file to read its output"
-
+const instructions = ["Welcome to darruma.xyz"," Commands:","> ls : Displays the folder and file names in the current directory", "> cd : Type cd followed by a directory to navigate to it" ,"> clear : type clear to reset the terminal","> cat : type cat follwed by a file to read its output"]
 let fs = {
     name: '/',
     type: 'directory',
@@ -20,7 +19,7 @@ let fs = {
         {
             name: 'instructions.txt',
             type: 'file',
-            data: instructions
+            data: instructions.join("\n")
         },
     ]
 }

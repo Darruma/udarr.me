@@ -1,7 +1,7 @@
-export default (fs) => {
+export default (children) => {
 
     return {
         type: 'UPDATE_AUTOCOMPLETE',
-        autocomplete: fs.children.map(thing => thing.name)
+        autocomplete: children.map(thing => thing.name)
     }
 }
