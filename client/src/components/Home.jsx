@@ -12,11 +12,11 @@ const Home = (props) => {
                 I am extremely passionate about programming and I have experience with languages such
                 as Javascript, Python , and Java. </p>
             <p></p>
-            <p className='links'>
+            <div className='links'>
                 <div onClick={() => window.open(links.CV, "_blank")} className='box no-underline'>CV</div>
                 <div onClick={() => window.open(links.GITHUB_PROFILE, "_blank")} className='box on-underline' ><img className='github-icon' src={links.GITHUB_LOGO}></img>Github</div>
                 <div onClick={() => props.changeDirectory('projects', 'projects', true)} className=' box projects-link'>Projects</div>
-            </p>
+            </div>
         </div>
     </div>)
 }

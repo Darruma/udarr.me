@@ -50,7 +50,7 @@ const terminalReducer = (state = intialState, action) => {
             })
 
         case 'CHANGE_DIRECTORY':
-            console.log("action path : " + action.path)
+
             return Object.assign({}, state, {
                 current_dir: action.current_dir,
                 full_path: action.path

@@ -68,6 +68,7 @@ class TerminalContainer extends Component {
     handleTerminalKey = (e) => {
         e.persist();
         if (e.keyCode === 13) {
+            e.preventDefault();
             this.props.outputTerminal("[client@darruma " + this.props.current_dir.name + "]$ " + e.target.value, "#fbf1c7");
             this.execute(e.target.value)
             e.target.value = ""

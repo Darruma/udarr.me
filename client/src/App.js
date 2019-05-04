@@ -15,14 +15,14 @@ class App extends Component {
                 <div className='left-side'>
                     <div className='homepage-container'>
                         <div className='centered-title'>Umair Darr</div>
-                        <TerminalContainer > </TerminalContainer>
+                        <TerminalContainer key="terminal" > </TerminalContainer>
                     </div>
                 </div>
                 <div className='right-side'>
                     <Router>
                         <Home path="/"></Home>
-                        <ProjectsContainer key={'filtered'} projects={this.props.projects} path='/projects/*'></ProjectsContainer>
-                        <ProjectsContainer key={'all'} projects={this.props.projects} path='/projects'></ProjectsContainer>
+                        <ProjectsContainer key='filtered' projects={this.props.projects} path='/projects/*'></ProjectsContainer>
+                        <ProjectsContainer key='all' projects={this.props.projects} path='/projects'></ProjectsContainer>
                         <ProjectPage path='/projects/:language/:name'></ProjectPage>
                     </Router>
                 </div>
