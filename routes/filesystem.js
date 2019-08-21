@@ -43,7 +43,8 @@ router.get('/filesystem', async (req, res) => {
                 link: repo.html_url,
                 languages: Object.keys(language_objects[index]),
                 pushed_at: repo.pushed_at,
-                webpage: repo.webpage
+                webpage: repo.webpage,  
+                readme:base64_to_ascii(data[index].content,repo.name)
             }
         })
 

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import TerminalContainer from './components/TerminalContainer'
 import ProjectsContainer from './components/ProjectsContainer';
-import ProjectPage from './components/ProjectPage'
 import { connect } from 'react-redux'
 import Home from './components/Home'
 import { Router, Link } from "@reach/router"
 import './css/homepage.css'
+import ProjectPageContainer from './components/ProjectPageContainer';
 class App extends Component {
 
     render() {
@@ -23,7 +23,7 @@ class App extends Component {
                         <Home path="/"></Home>
                         <ProjectsContainer key='filtered' projects={this.props.projects} path='/projects/*'></ProjectsContainer>
                         <ProjectsContainer key='all' projects={this.props.projects} path='/projects'></ProjectsContainer>
-                        <ProjectPage path='/projects/:language/:name'></ProjectPage>
+                        <ProjectPageContainer path='/projects/:language/:name'></ProjectPageContainer>
                     </Router>
                 </div>
 
