@@ -19,3 +19,5 @@ npm run dev
 - Add project pages (pictures/readme)
 - Set up blog page renderer
 - Change default page
+- Generate autocomplete tree fully
+- Redo path generation

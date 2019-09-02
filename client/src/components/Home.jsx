@@ -8,7 +8,7 @@ const Home = (props) => {
         <div className='title'>About me</div>
         <div className='about-me'>
             <p>Hi! I’m Umair Darr.
-                I’m a self-taught software developer currently seeking new opportunities.
+                I’m a self-taught software developer currently working as a software engineer at Levelprime.
                 I am extremely passionate about programming and I have experience with languages such
                 as Javascript, Python , and Java. </p>
             <p></p>

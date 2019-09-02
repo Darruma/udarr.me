@@ -18,10 +18,13 @@ class TerminalContainer extends Component {
     }
     componentDidMount = async () => {
         await this.props.getJSON('/api/filesystem');
+        if(window.location.pathname != "/") {
+            this.execute(`cd ${window.location.pathname.substring(1)}`);
+        } else {
+            this.props.outputTerminal("[client@darruma /]$ cat instructions.txt")
+            this.execute("cat instructions.txt")
+        }
         this.props.updateAutocomplete(this.props.current_dir.children);
-        this.props.outputTerminal("[client@darruma /]$ cat instructions.txt")
-        this.execute("cat instructions.txt")
-
     }
 
     cd_dir = (path, root) => {

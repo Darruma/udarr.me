@@ -1,8 +1,8 @@
 import React from 'react'
 
 const ProjectPage = (props) => {
-    console.log(props.data)
-    return (<div>
-    </div>)
+    return (props.project_data ? <div>
+        {props.project_data.name}
+    </div> : <div></div>)
 }
 export default ProjectPage

@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 import ProjectPage from './ProjectPage';
 
 class ProjectPageContainer extends Component {
-    state ={
-
-    }
+    
     render() { 
-        console.log(this.props)
-        return(<ProjectPage data={this.props.projects.find(project => {
+        let project_data =  this.props.projects.find(project => {
             return project.name == this.props.name
-        })}></ProjectPage>)
+        })
+      
+        return(<ProjectPage project_data={project_data} ></ProjectPage>)
     }
 }
 const mapStateToProps = (state) => {

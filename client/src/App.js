@@ -9,6 +9,9 @@ import './css/homepage.css'
 import ProjectPageContainer from './components/ProjectPageContainer';
 class App extends Component {
 
+    componentDidMount() {
+        
+    }
     render() {
         return (
             <div className='main-flexbox'>
