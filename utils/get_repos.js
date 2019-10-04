@@ -1,4 +1,4 @@
-const fetch_authenticated = require('../actions/fetch_authenticated');
+const fetch_authenticated = require('../utils/fetch_authenticated');
 module.exports = async () => {
     try {
         const repos = await fetch_authenticated('https://api.github.com/users/Darruma/repos')
