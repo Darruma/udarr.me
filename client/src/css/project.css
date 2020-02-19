@@ -60,3 +60,9 @@
 .source-code {
     display: inline-block;
 }
+.project-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
