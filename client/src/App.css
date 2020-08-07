@@ -21,7 +21,6 @@
 .right-side {
     width: 60%;
     height: 100%;
-    overflow-y: scroll;
     overflow-x: hidden;
 }
 
@@ -41,4 +40,16 @@
     .right-side {
         width: 100%;
     }
+}
+pre {
+    display: inline-block;
+    width: 90%;
+    background-color: #f6f8fa;
+    font-size: 17px;
+}
+
+img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

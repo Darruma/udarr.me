@@ -37,11 +37,15 @@ router.get('/filesystem', async (req, res) => {
         const repos_amount = repo_data.length
         const language_objects = data.slice(repos_amount, data.length - 1)
         const projects = repo_data.map((repo, index) => {
+            let langs = Object.keys(language_objects[index])
+            langs = langs.map(l => {
+                return l == "C#" ? "CSharp" : l
+            })
             return {
                 name: repo.name,
                 description: repo.description,
                 link: repo.html_url,
-                languages: Object.keys(language_objects[index]),
+                languages: langs,
                 pushed_at: repo.pushed_at,
                 webpage: repo.webpage,  
                 readme:base64_to_ascii(data[index].content,repo.name)
@@ -52,6 +56,9 @@ router.get('/filesystem', async (req, res) => {
             return [...arr, ...Object.keys(obj)]
         }, [])))
         fs.children[0].children = langs.map(l => {
+            if(l == "C#") {
+                l = "CSharp"
+            }
             return {
                 name: l,
                 type: 'directory',
@@ -62,7 +69,13 @@ router.get('/filesystem', async (req, res) => {
             const readme = base64_to_ascii(data[index].content, repo.name);
             repo_languages = Object.keys(language_objects[index])
             repo_languages.forEach(lang => {
+                if(lang == "C#") {
+                    lang = "CSharp"
+                }
                 const folderIndex = fs.children[0].children.findIndex(language_folder => language_folder.name == lang);
+                console.log(folderIndex)
+                console.log(lang)
+                
                 fs.children[0].children[folderIndex].children.push(
                     {
                         name: repo.name,
@@ -82,6 +95,7 @@ router.get('/filesystem', async (req, res) => {
         })
     }
     catch (err) {
+        console.log(err)
         res.send({
             success: false,
             error: err

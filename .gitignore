@@ -2,4 +2,3 @@
 *.swp
 .env
 client/build
-gym.sh

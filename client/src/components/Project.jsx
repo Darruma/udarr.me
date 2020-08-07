@@ -4,6 +4,7 @@ import '../css/project.css'
 import { connect } from 'react-redux';
 import changeDirectory from '../redux/actions/changeDirectory'
 const Project = (props) => {
+    console.log(props)
     return (<div className='project-card'>
         <div className='project-container'>
             <p className='project-title'>{props.name}</p>

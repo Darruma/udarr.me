@@ -64,8 +64,6 @@
     display: inline-block;
 }
 .project-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
+    padding-left: 20px;
 }
