@@ -21,6 +21,9 @@ app.use(
 	})
 );
 app.use('/api', filesystem)
+app.use("/library",(req,res) => {
+    res.sendFile(path.resolve(__dirname,'Books.html'));
+})
 app.use('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
